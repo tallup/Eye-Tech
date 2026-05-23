@@ -19,6 +19,10 @@ defineProps<{
   columns: Column<T>[]
   rowLink?: (row: T) => string
 }>()
+
+function navigateTo(url: string) {
+  window.location.href = url
+}
 </script>
 
 <template>
@@ -34,7 +38,7 @@ defineProps<{
           v-for="row in data.data"
           :key="(row as any).id"
           :class="rowLink ? 'cursor-pointer hover:bg-muted/40' : ''"
-          @click="rowLink && (window.location.href = rowLink(row))"
+          @click="rowLink && navigateTo(rowLink(row))"
         >
           <TableCell v-for="col in columns" :key="col.key">
             {{ col.render ? col.render(row) : (row as any)[col.key] }}
