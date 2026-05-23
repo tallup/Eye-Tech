@@ -1,10 +1,8 @@
 <footer class="mt-24 border-t hairline bg-paper-alt">
     <div class="section py-14 grid gap-10 md:grid-cols-4">
         <div>
-            <div class="flex items-center gap-2.5">
-                <img src="{{ asset('images/logo.svg') }}" alt="" class="h-8 w-8">
-                <span class="font-display text-lg font-semibold">EyeTech</span>
-            </div>
+            <img src="{{ asset('images/logo.png') }}" alt="EyeTech" class="h-16 w-auto">
+
             <p class="mt-3 text-sm text-ink-soft max-w-xs">
                 Mobile phones, accessories and trusted repair.
             </p>
