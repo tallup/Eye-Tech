@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 import { usePage, router } from '@inertiajs/vue3'
-import { Toaster } from 'sonner'
+import { Toaster } from 'vue-sonner'
 import { Button } from '@/components/ui/button'
 import type { User } from '@/types/models'
 

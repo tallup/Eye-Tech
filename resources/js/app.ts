@@ -1,6 +1,6 @@
 import { createApp, h } from 'vue'
 import { createInertiaApp, router } from '@inertiajs/vue3'
-import { Toaster, toast } from 'sonner'
+import { Toaster, toast } from 'vue-sonner'
 import '../css/app.css'
 
 createInertiaApp({
