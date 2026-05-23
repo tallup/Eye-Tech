@@ -5,15 +5,22 @@
 
 @section('content')
 
-<section class="section pt-14 md:pt-20 pb-10">
-    <div class="max-w-2xl">
-        <p class="text-sm uppercase tracking-widest text-brand-red font-medium">Services</p>
-        <h1 class="mt-3 font-display text-display-md md:text-display-lg font-semibold tracking-tight">Fixed today, not next week.</h1>
-        <p class="mt-5 text-lg text-ink-soft">From unlocking to full repairs — clear quotes, no surprises.</p>
+<section class="section pt-10 md:pt-14 pb-10">
+    <div class="grid items-center gap-8 md:gap-12 md:grid-cols-12">
+        <div class="md:col-span-7">
+            <p class="text-sm uppercase tracking-widest text-brand-red font-medium">Services</p>
+            <h1 class="mt-3 font-display text-display-md md:text-display-lg font-semibold tracking-tight">Fixed today, not next week.</h1>
+            <p class="mt-4 text-lg text-ink-soft max-w-xl">From unlocking to full repairs — clear quotes, no surprises.</p>
+        </div>
+        <figure class="md:col-span-5 aspect-[4/3] overflow-hidden rounded-2xl bg-paper-alt">
+            <img src="https://images.pexels.com/photos/4350099/pexels-photo-4350099.jpeg?auto=compress&w=900"
+                 alt="Technician repairing a phone" loading="eager"
+                 class="h-full w-full object-cover">
+        </figure>
     </div>
 </section>
 
-<section class="section section-y">
+<section class="section pt-2 pb-12">
     @if($services->isEmpty())
         <p class="text-ink-soft">No services listed right now.</p>
     @else
