@@ -13,7 +13,7 @@
             <p class="mt-4 text-lg text-ink-soft max-w-xl">From unlocking to full repairs — clear quotes, no surprises.</p>
         </div>
         <figure class="md:col-span-5 aspect-[4/3] overflow-hidden rounded-2xl bg-paper-alt">
-            <img src="https://images.pexels.com/photos/4350099/pexels-photo-4350099.jpeg?auto=compress&w=900"
+            <img src="https://images.pexels.com/photos/5816289/pexels-photo-5816289.jpeg?auto=compress&w=900"
                  alt="Technician repairing a phone" loading="eager"
                  class="h-full w-full object-cover">
         </figure>
@@ -52,7 +52,7 @@
                 </ul>
             </div>
             <figure class="reveal aspect-[4/5] overflow-hidden rounded-2xl bg-paper">
-                <img src="https://images.pexels.com/photos/4350099/pexels-photo-4350099.jpeg?auto=compress&w=900"
+                <img src="https://images.pexels.com/photos/4071878/pexels-photo-4071878.jpeg?auto=compress&w=900"
                      alt="Technician carefully working on a phone" loading="lazy"
                      class="h-full w-full object-cover">
             </figure>
