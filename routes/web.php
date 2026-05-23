@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Auth\LogoutController;
 use App\Http\Controllers\WebsiteController;
 use Illuminate\Support\Facades\Route;
 
@@ -19,3 +21,18 @@ Route::get('/custom-reports', function () {
 
     return view('custom-reports', compact('data'));
 })->name('custom-reports');
+
+Route::middleware('guest')->group(function () {
+    Route::get('/login', [LoginController::class, 'create'])->name('login');
+    Route::post('/login', [LoginController::class, 'store']);
+});
+
+Route::middleware('auth')->group(function () {
+    Route::post('/logout', LogoutController::class)->name('logout');
+});
+
+// Phase 0 placeholder /app/* routes — Task 9 replaces these
+Route::middleware('auth')->prefix('app')->group(function () {
+    Route::get('/dashboard', fn () => 'placeholder')->name('dashboard');
+    Route::get('/pos', fn () => 'placeholder')->name('pos');
+});
