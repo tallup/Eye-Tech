@@ -36,7 +36,7 @@
                 {{-- CONTENT SLOT: replace with real address + hours. --}}
                 <li>Serrekunda, The Gambia</li>
                 <li>Open today 9am–8pm</li>
-                <li><a href="#" class="hover:text-ink">WhatsApp us ▸</a></li>
+                <li><a href="{{ \App\Support\Whatsapp::url() }}" target="_blank" rel="noopener" class="hover:text-ink">WhatsApp us ▸</a></li>
             </ul>
         </div>
     </div>

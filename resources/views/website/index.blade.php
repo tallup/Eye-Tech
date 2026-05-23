@@ -18,7 +18,7 @@
             </p>
             <div class="mt-6 flex flex-wrap gap-3">
                 <a href="#shop" class="btn-primary">Visit shop</a>
-                <a href="#" class="btn-outline">
+                <a href="{{ \App\Support\Whatsapp::url() }}" target="_blank" rel="noopener" class="btn-outline">
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
                     WhatsApp us
                 </a>
@@ -115,9 +115,24 @@
 {{-- BRANDS STRIP --}}
 <section class="section pt-8 md:pt-10 pb-2">
     <p class="text-xs uppercase tracking-widest text-ink-soft text-center">Brands we carry</p>
-    <div class="mt-5 flex flex-wrap items-center justify-center gap-x-10 gap-y-4 opacity-80">
-        @foreach (['Apple', 'Samsung', 'Tecno', 'Infinix', 'Itel', 'Xiaomi', 'Oraimo'] as $brand)
-            <span class="font-display text-lg md:text-xl font-semibold text-ink-soft">{{ $brand }}</span>
+    <div class="mt-5 flex flex-wrap items-center justify-center gap-x-10 gap-y-5">
+        @php
+            $logoBrands = [
+                ['name' => 'Apple',    'slug' => 'apple'],
+                ['name' => 'Samsung',  'slug' => 'samsung'],
+                ['name' => 'Xiaomi',   'slug' => 'xiaomi'],
+                ['name' => 'Huawei',   'slug' => 'huawei'],
+            ];
+            $textBrands = ['Tecno', 'Infinix', 'Itel', 'Oraimo'];
+        @endphp
+        @foreach ($logoBrands as $b)
+            <img src="https://cdn.simpleicons.org/{{ $b['slug'] }}/4B4B4B"
+                 alt="{{ $b['name'] }}"
+                 loading="lazy"
+                 class="h-7 md:h-8 w-auto opacity-70 hover:opacity-100 transition">
+        @endforeach
+        @foreach ($textBrands as $name)
+            <span class="font-display text-lg md:text-xl font-semibold text-ink-soft opacity-80">{{ $name }}</span>
         @endforeach
     </div>
 </section>
@@ -138,7 +153,7 @@
                  class="h-full w-full object-cover">
         </figure>
         <figure class="overflow-hidden rounded-2xl aspect-square bg-paper-alt">
-            <img src="https://images.pexels.com/photos/371924/pexels-photo-371924.jpeg?auto=compress&w=600"
+            <img src="https://images.pexels.com/photos/4068366/pexels-photo-4068366.jpeg?auto=compress&w=600"
                  alt="Repair tools" loading="lazy"
                  class="h-full w-full object-cover">
         </figure>

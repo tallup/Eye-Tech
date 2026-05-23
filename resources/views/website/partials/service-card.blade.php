@@ -27,5 +27,5 @@
             <span class="text-xs text-ink-soft">{{ $service->estimated_duration }} min</span>
         @endif
     </div>
-    <a href="#" class="btn-outline mt-2 justify-center text-sm">Book via WhatsApp</a>
+    <a href="{{ \App\Support\Whatsapp::url("Hi EyeTech, I'd like to book the {$service->name} service.") }}" target="_blank" rel="noopener" class="btn-outline mt-2 justify-center text-sm">Book via WhatsApp</a>
 </article>

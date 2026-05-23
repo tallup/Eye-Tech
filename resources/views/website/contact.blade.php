@@ -25,14 +25,14 @@
         @php
             // CONTENT SLOTS: replace placeholder values.
             $methods = [
-                ['title' => 'WhatsApp',  'value' => '+220 000 0000',           'href' => '#'],
-                ['title' => 'Phone',     'value' => '+220 000 0000',           'href' => 'tel:+2200000000'],
-                ['title' => 'Email',     'value' => 'hello@eyetech.example',   'href' => 'mailto:hello@eyetech.example'],
-                ['title' => 'Address',   'value' => 'Serrekunda, The Gambia',  'href' => '#'],
+                ['title' => 'WhatsApp',  'value' => config('site.phone_display'),  'href' => \App\Support\Whatsapp::url(),                                              'external' => true],
+                ['title' => 'Phone',     'value' => config('site.phone_display'),  'href' => 'tel:' . preg_replace('/\D+/', '', config('site.phone_display')),           'external' => false],
+                ['title' => 'Email',     'value' => 'hello@eyetech.example',       'href' => 'mailto:hello@eyetech.example',                                            'external' => false],
+                ['title' => 'Address',   'value' => 'Serrekunda, The Gambia',      'href' => '#',                                                                       'external' => false],
             ];
         @endphp
         @foreach ($methods as $m)
-            <a href="{{ $m['href'] }}" class="block rounded-xl border hairline p-5 transition hover:border-ink/40">
+            <a href="{{ $m['href'] }}" @if(!empty($m['external'])) target="_blank" rel="noopener" @endif class="block rounded-xl border hairline p-5 transition hover:border-ink/40">
                 <p class="text-sm text-ink-soft">{{ $m['title'] }}</p>
                 <p class="mt-1 font-display text-xl font-semibold">{{ $m['value'] }}</p>
             </a>
