@@ -27,11 +27,11 @@
         <p>If we don't have it, we'll tell you who does. If we can't fix it, we won't pretend we can.</p>
     </div>
     <div class="reveal">
-        @include('website.partials.image-slot', [
-            'src' => 'https://images.pexels.com/photos/1092671/pexels-photo-1092671.jpeg?auto=compress&w=1200',
-            'alt' => 'Phone shop counter',
-            'ratio' => 'aspect-[4/5]',
-        ])
+        <figure class="aspect-[4/5] overflow-hidden rounded-2xl bg-brand-red text-white flex flex-col justify-between p-7">
+            <p class="text-xs uppercase tracking-widest opacity-80">Our promise</p>
+            <p class="font-display text-3xl leading-tight">If we can't fix it, we won't pretend we can.</p>
+            <p class="text-sm opacity-80">Honest quotes. Genuine parts. 30-day workmanship warranty.</p>
+        </figure>
     </div>
 </section>
 

@@ -56,7 +56,7 @@
                 ['Phones',      'https://images.pexels.com/photos/788946/pexels-photo-788946.jpeg?auto=compress&w=600'],
                 ['Audio',       'https://images.pexels.com/photos/3587478/pexels-photo-3587478.jpeg?auto=compress&w=600'],
                 ['Chargers',    'https://images.pexels.com/photos/4526481/pexels-photo-4526481.jpeg?auto=compress&w=600'],
-                ['Cases',       'https://images.pexels.com/photos/5081931/pexels-photo-5081931.jpeg?auto=compress&w=600'],
+                ['Cases',       'https://images.pexels.com/photos/1647976/pexels-photo-1647976.jpeg?auto=compress&w=600'],
             ];
         @endphp
         @foreach ($cats as [$name, $src])
@@ -152,18 +152,17 @@
             <p class="font-display text-xl leading-tight">30-day workmanship guarantee on every repair.</p>
         </figure>
         <figure class="overflow-hidden rounded-2xl aspect-square bg-paper-alt">
-            <img src="https://images.pexels.com/photos/1647976/pexels-photo-1647976.jpeg?auto=compress&w=600"
-                 alt="Cases and accessories" loading="lazy"
+            <img src="https://images.pexels.com/photos/3587478/pexels-photo-3587478.jpeg?auto=compress&w=600"
+                 alt="Wireless earbuds on display" loading="lazy"
                  class="h-full w-full object-cover">
         </figure>
-        <figure class="overflow-hidden rounded-2xl aspect-square bg-paper-alt">
-            <img src="https://images.pexels.com/photos/4790285/pexels-photo-4790285.jpeg?auto=compress&w=600"
-                 alt="Accessories laid out" loading="lazy"
-                 class="h-full w-full object-cover">
+        <figure class="overflow-hidden rounded-2xl aspect-square bg-paper text-ink border hairline p-5 flex flex-col justify-between">
+            <p class="text-xs uppercase tracking-widest text-brand-red">Genuine</p>
+            <p class="font-display text-lg leading-tight">Only real accessories, never knockoffs.</p>
         </figure>
         <figure class="overflow-hidden rounded-2xl aspect-square bg-paper-alt">
-            <img src="https://images.pexels.com/photos/4068315/pexels-photo-4068315.jpeg?auto=compress&w=600"
-                 alt="Workshop bench" loading="lazy"
+            <img src="https://images.pexels.com/photos/4068314/pexels-photo-4068314.jpeg?auto=compress&w=600"
+                 alt="Phone shop interior" loading="lazy"
                  class="h-full w-full object-cover">
         </figure>
     </div>
