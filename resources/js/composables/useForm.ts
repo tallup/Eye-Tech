@@ -1,5 +1,5 @@
 import { useForm as inertiaUseForm } from '@inertiajs/vue3'
-import { toast } from 'sonner'
+import { toast } from 'vue-sonner'
 
 type FormDataType = Record<string, any>
 

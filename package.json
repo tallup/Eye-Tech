@@ -32,8 +32,8 @@
         "clsx": "^2.1.1",
         "lucide-vue-next": "^1.0.0",
         "radix-vue": "^1.9.17",
-        "sonner": "^2.0.7",
         "tailwind-merge": "^3.6.0",
-        "tailwindcss-animate": "^1.0.7"
+        "tailwindcss-animate": "^1.0.7",
+        "vue-sonner": "^2.0.9"
     }
 }
