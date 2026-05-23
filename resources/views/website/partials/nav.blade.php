@@ -1,8 +1,7 @@
 <header data-topnav class="sticky top-0 z-40 bg-paper/90 backdrop-blur supports-[backdrop-filter]:bg-paper/75 border-b hairline">
     <div class="section flex h-18 items-center justify-between py-3">
-        <a href="{{ route('home') }}" class="flex items-center gap-2.5">
-            <img src="{{ asset('images/logo.svg') }}" alt="EyeTech" class="h-8 w-8">
-            <span class="font-display text-xl font-semibold tracking-tight">EyeTech</span>
+        <a href="{{ route('home') }}" class="flex items-center" aria-label="EyeTech home">
+            <img src="{{ asset('images/logo.png') }}" alt="EyeTech — Makes Your Day Easy" class="h-12 w-auto">
         </a>
 
         <nav class="hidden md:flex items-center gap-8 text-[15px] font-medium">
