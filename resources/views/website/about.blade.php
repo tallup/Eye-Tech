@@ -5,15 +5,22 @@
 
 @section('content')
 
-<section class="section pt-14 md:pt-20 pb-10">
-    <div class="max-w-2xl">
-        <p class="text-sm uppercase tracking-widest text-brand-red font-medium">About</p>
-        <h1 class="mt-3 font-display text-display-md md:text-display-lg font-semibold tracking-tight">A real shop. Real people.</h1>
-        <p class="mt-5 text-lg text-ink-soft">EyeTech opened to give the neighbourhood somewhere honest to buy a phone and somewhere reliable to fix one.</p>
+<section class="section pt-10 md:pt-14 pb-8">
+    <div class="grid items-center gap-8 md:gap-12 md:grid-cols-12">
+        <div class="md:col-span-7">
+            <p class="text-sm uppercase tracking-widest text-brand-red font-medium">About</p>
+            <h1 class="mt-3 font-display text-display-md md:text-display-lg font-semibold tracking-tight">A real shop. Real people.</h1>
+            <p class="mt-4 text-lg text-ink-soft max-w-xl">EyeTech opened to give the neighbourhood somewhere honest to buy a phone and somewhere reliable to fix one.</p>
+        </div>
+        <figure class="md:col-span-5 aspect-[4/3] overflow-hidden rounded-2xl bg-paper-alt">
+            <img src="https://images.pexels.com/photos/1092671/pexels-photo-1092671.jpeg?auto=compress&w=900"
+                 alt="Phone shop counter" loading="eager"
+                 class="h-full w-full object-cover">
+        </figure>
     </div>
 </section>
 
-<section class="section section-y grid gap-10 md:grid-cols-2 md:items-center">
+<section class="section py-10 grid gap-10 md:grid-cols-2 md:items-center">
     <div class="reveal space-y-5 text-ink-soft leading-relaxed">
         {{-- CONTENT SLOT: replace with the owner's real story. --}}
         <p>We sell mainstream and budget phones, every accessory you actually need, and we handle the software side too — unlocking, password resets, app installs, cloud setup.</p>
