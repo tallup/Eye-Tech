@@ -26,7 +26,7 @@ const submit = () => {
       <CardContent>
         <form @submit.prevent="submit" class="space-y-4">
           <div class="space-y-2">
-            <Label for="email">Email</Label>
+            <Label html-for="email">Email</Label>
             <Input
               id="email"
               type="email"
@@ -37,7 +37,7 @@ const submit = () => {
             <p v-if="form.errors.email" class="text-sm text-destructive">{{ form.errors.email }}</p>
           </div>
           <div class="space-y-2">
-            <Label for="password">Password</Label>
+            <Label html-for="password">Password</Label>
             <Input
               id="password"
               type="password"
