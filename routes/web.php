@@ -38,4 +38,8 @@ Route::middleware('auth')->prefix('app')->group(function () {
         Route::get('/dashboard', DashboardController::class)->name('dashboard');
     });
     Route::get('/pos', [PosController::class, 'index'])->name('pos');
+    Route::post('/pos/checkout', [PosController::class, 'checkout'])->name('pos.checkout');
+
+    // Placeholder — Task 9 replaces with real SaleController@show
+    Route::get('/sales/{sale}', fn (\App\Models\Sales $sale) => 'placeholder')->name('sales.show');
 });
