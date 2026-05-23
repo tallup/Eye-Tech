@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\App\DashboardController;
+use App\Http\Controllers\App\PosController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\LogoutController;
 use App\Http\Controllers\WebsiteController;
@@ -31,8 +33,9 @@ Route::middleware('auth')->group(function () {
     Route::post('/logout', LogoutController::class)->name('logout');
 });
 
-// Phase 0 placeholder /app/* routes — Task 9 replaces these
 Route::middleware('auth')->prefix('app')->group(function () {
-    Route::get('/dashboard', fn () => 'placeholder')->name('dashboard');
-    Route::get('/pos', fn () => 'placeholder')->name('pos');
+    Route::middleware('role:admin')->group(function () {
+        Route::get('/dashboard', DashboardController::class)->name('dashboard');
+    });
+    Route::get('/pos', [PosController::class, 'index'])->name('pos');
 });
