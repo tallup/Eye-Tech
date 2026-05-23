@@ -36,6 +36,30 @@
 
 @include('website.partials.how-it-works')
 
+{{-- OUR PROMISE --}}
+<section class="bg-paper-alt">
+    <div class="section section-y">
+        <div class="grid gap-10 md:grid-cols-2 md:items-center">
+            <div class="reveal">
+                <p class="text-sm uppercase tracking-widest text-brand-red font-medium">Our promise</p>
+                <h2 class="mt-3 font-display text-2xl md:text-3xl font-semibold tracking-tight">If we touch it, it's covered.</h2>
+                <p class="mt-4 text-ink-soft leading-relaxed">Every screen and battery repair comes with a 30-day workmanship warranty. If anything we did fails in that window, we make it right — no debate, no re-charge.</p>
+                <ul class="mt-6 space-y-2 text-ink-soft">
+                    <li class="flex items-start gap-2"><span class="text-brand-red">✓</span> Up-front quote before we open the device</li>
+                    <li class="flex items-start gap-2"><span class="text-brand-red">✓</span> Genuine or grade-A parts</li>
+                    <li class="flex items-start gap-2"><span class="text-brand-red">✓</span> 30-day workmanship warranty</li>
+                    <li class="flex items-start gap-2"><span class="text-brand-red">✓</span> Same-day completion for most jobs</li>
+                </ul>
+            </div>
+            <figure class="reveal aspect-[4/5] overflow-hidden rounded-2xl bg-paper">
+                <img src="https://images.pexels.com/photos/4068366/pexels-photo-4068366.jpeg?auto=compress&w=900"
+                     alt="Phone repair tools laid out on a workbench" loading="lazy"
+                     class="h-full w-full object-cover">
+            </figure>
+        </div>
+    </div>
+</section>
+
 @include('website.partials.cta-band', [
     'heading' => "Don't see what you need?",
     'button_text' => 'Ask on WhatsApp',

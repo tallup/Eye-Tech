@@ -194,6 +194,54 @@
     </div>
 </section>
 
+{{-- WHY EYETECH --}}
+<section class="bg-paper-alt">
+    <div class="section section-y">
+        <div class="grid gap-10 md:grid-cols-3">
+            @foreach ([
+                ['title' => 'Genuine accessories only',  'body' => "If it's on our shelf, it's real. No no-name knockoffs that fry your phone."],
+                ['title' => 'Up-front quotes',           'body' => 'You hear the price before any tool comes out. No surprise charges at pickup.'],
+                ['title' => 'Walk-in friendly',          'body' => "No appointment needed. Stop by between 9am and 8pm, six days a week."],
+            ] as $point)
+                <div class="reveal">
+                    <div class="flex h-10 w-10 items-center justify-center rounded-lg bg-brand-red/10 text-brand-red">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+                    </div>
+                    <h3 class="mt-4 font-display text-xl font-semibold">{{ $point['title'] }}</h3>
+                    <p class="mt-2 text-ink-soft leading-relaxed">{{ $point['body'] }}</p>
+                </div>
+            @endforeach
+        </div>
+    </div>
+</section>
+
+{{-- FAQ --}}
+<section class="section section-y">
+    <div class="grid gap-10 md:grid-cols-12">
+        <div class="md:col-span-4">
+            <p class="text-sm uppercase tracking-widest text-brand-red font-medium">FAQ</p>
+            <h2 class="mt-3 font-display text-2xl md:text-3xl font-semibold tracking-tight">Quick answers.</h2>
+            <p class="mt-3 text-ink-soft">If yours isn't here, just ask.</p>
+        </div>
+        <div class="md:col-span-8 divide-y divide-line border-y hairline">
+            @foreach ([
+                ['How long does an unlock take?',         "Most carrier unlocks are finished while you wait — usually under an hour."],
+                ['Do you sell second-hand phones?',       "Yes, all checked and tested in-store. We never sell a phone we wouldn't use ourselves."],
+                ['Do you give a warranty on repairs?',    "All screen and battery repairs carry a 30-day workmanship warranty."],
+                ['What payment methods do you accept?',   "Cash, mobile money, and bank transfer."],
+            ] as $faq)
+                <details class="group py-4">
+                    <summary class="flex cursor-pointer items-center justify-between gap-4 font-medium">
+                        <span>{{ $faq[0] }}</span>
+                        <svg class="h-5 w-5 text-ink-soft transition group-open:rotate-180" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+                    </summary>
+                    <p class="mt-3 text-ink-soft leading-relaxed">{{ $faq[1] }}</p>
+                </details>
+            @endforeach
+        </div>
+    </div>
+</section>
+
 @include('website.partials.cta-band')
 
 @endsection

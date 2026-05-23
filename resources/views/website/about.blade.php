@@ -48,6 +48,24 @@
     </div>
 </section>
 
+{{-- STATS --}}
+<section class="section section-y border-t hairline">
+    <h2 class="font-display text-2xl md:text-3xl font-semibold tracking-tight">By the numbers</h2>
+    <div class="mt-8 grid grid-cols-2 md:grid-cols-4 gap-4">
+        @foreach ([
+            ['5+',     'years serving the area'],
+            ['2,000+', 'phones repaired'],
+            ['24h',    'average turnaround'],
+            ['100%',   'genuine parts'],
+        ] as $stat)
+            <div class="rounded-2xl border hairline p-6 bg-paper">
+                <p class="font-display text-3xl md:text-4xl font-semibold tabular-nums text-brand-red">{{ $stat[0] }}</p>
+                <p class="mt-1 text-ink-soft">{{ $stat[1] }}</p>
+            </div>
+        @endforeach
+    </div>
+</section>
+
 <section class="section section-y border-t hairline">
     <h2 class="font-display text-2xl md:text-3xl font-semibold tracking-tight">Visit us</h2>
     <div class="mt-8 grid gap-6 md:grid-cols-2">
