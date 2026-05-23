@@ -52,8 +52,8 @@
                 </ul>
             </div>
             <figure class="reveal aspect-[4/5] overflow-hidden rounded-2xl bg-paper">
-                <img src="https://images.pexels.com/photos/4068366/pexels-photo-4068366.jpeg?auto=compress&w=900"
-                     alt="Phone repair tools laid out on a workbench" loading="lazy"
+                <img src="https://images.pexels.com/photos/4350099/pexels-photo-4350099.jpeg?auto=compress&w=900"
+                     alt="Technician carefully working on a phone" loading="lazy"
                      class="h-full w-full object-cover">
             </figure>
         </div>

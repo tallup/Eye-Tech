@@ -147,14 +147,13 @@
                  alt="Technician repairing a phone" loading="lazy"
                  class="h-full w-full object-cover">
         </figure>
-        <figure class="overflow-hidden rounded-2xl aspect-square bg-paper-alt">
-            <img src="https://images.pexels.com/photos/4316/electronics-mobile-phone-screen.jpg?auto=compress&w=600"
-                 alt="Disassembled phone parts" loading="lazy"
-                 class="h-full w-full object-cover">
+        <figure class="overflow-hidden rounded-2xl aspect-square bg-brand-red text-white p-5 flex flex-col justify-between">
+            <p class="text-xs uppercase tracking-widest opacity-80">Warranty</p>
+            <p class="font-display text-xl leading-tight">30-day workmanship guarantee on every repair.</p>
         </figure>
         <figure class="overflow-hidden rounded-2xl aspect-square bg-paper-alt">
-            <img src="https://images.pexels.com/photos/4068366/pexels-photo-4068366.jpeg?auto=compress&w=600"
-                 alt="Repair tools" loading="lazy"
+            <img src="https://images.pexels.com/photos/1647976/pexels-photo-1647976.jpeg?auto=compress&w=600"
+                 alt="Cases and accessories" loading="lazy"
                  class="h-full w-full object-cover">
         </figure>
         <figure class="overflow-hidden rounded-2xl aspect-square bg-paper-alt">
