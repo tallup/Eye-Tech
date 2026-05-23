@@ -158,12 +158,12 @@
                  class="h-full w-full object-cover">
         </figure>
         <figure class="overflow-hidden rounded-2xl aspect-square bg-paper-alt">
-            <img src="https://images.pexels.com/photos/699122/pexels-photo-699122.jpeg?auto=compress&w=600"
+            <img src="https://images.pexels.com/photos/3945667/pexels-photo-3945667.jpeg?auto=compress&w=600"
                  alt="Accessories laid out" loading="lazy"
                  class="h-full w-full object-cover">
         </figure>
         <figure class="overflow-hidden rounded-2xl aspect-square bg-paper-alt">
-            <img src="https://images.pexels.com/photos/162553/keys-workshop-mechanic-tools-162553.jpeg?auto=compress&w=600"
+            <img src="https://images.pexels.com/photos/4068314/pexels-photo-4068314.jpeg?auto=compress&w=600"
                  alt="Workshop bench" loading="lazy"
                  class="h-full w-full object-cover">
         </figure>
