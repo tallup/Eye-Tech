@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\App\DashboardController;
 use App\Http\Controllers\App\PosController;
+use App\Http\Controllers\App\SaleController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\LogoutController;
 use App\Http\Controllers\WebsiteController;
@@ -40,6 +41,6 @@ Route::middleware('auth')->prefix('app')->group(function () {
     Route::get('/pos', [PosController::class, 'index'])->name('pos');
     Route::post('/pos/checkout', [PosController::class, 'checkout'])->name('pos.checkout');
 
-    // Placeholder — Task 9 replaces with real SaleController@show
-    Route::get('/sales/{sale}', fn (\App\Models\Sales $sale) => 'placeholder')->name('sales.show');
+    Route::get('/sales', [SaleController::class, 'index'])->name('sales.index');
+    Route::get('/sales/{sale}', [SaleController::class, 'show'])->name('sales.show');
 });
