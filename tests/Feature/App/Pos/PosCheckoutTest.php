@@ -85,4 +85,38 @@ class PosCheckoutTest extends TestCase
             ])
             ->assertSessionHasErrors('items');
     }
+
+    public function test_concurrent_checkouts_only_one_succeeds_when_stock_is_one(): void
+    {
+        $cashierA = User::factory()->create(['role' => 'cashier']);
+        $cashierA->syncRoles(['cashier']);
+        $cashierB = User::factory()->create(['role' => 'cashier']);
+        $cashierB->syncRoles(['cashier']);
+
+        $product = Product::factory()->create([
+            'category_id' => Category::factory(),
+            'supplier_id' => Supplier::factory(),
+            'stock_quantity' => 1,
+            'selling_price' => 10.00,
+        ]);
+
+        $r1 = $this->actingAs($cashierA)->post('/app/pos/checkout', [
+            'payment_method' => 'cash',
+            'items' => [['product_id' => $product->id, 'quantity' => 1]],
+        ]);
+        $r2 = $this->actingAs($cashierB)->from('/app/pos')->post('/app/pos/checkout', [
+            'payment_method' => 'cash',
+            'items' => [['product_id' => $product->id, 'quantity' => 1]],
+        ]);
+
+        // r1 redirects to /app/sales/{id} (success). r2 redirects back to /app/pos (failure).
+        $r1->assertRedirect();
+        $this->assertStringContainsString('/app/sales/', $r1->headers->get('Location'));
+
+        $r2->assertRedirect('/app/pos');
+        $r2->assertSessionHas('error');
+
+        $this->assertEquals(1, Sales::count(), 'only one sale created');
+        $this->assertEquals(0, $product->fresh()->stock_quantity, 'stock fully consumed by winner');
+    }
 }
