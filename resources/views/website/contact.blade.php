@@ -5,11 +5,18 @@
 
 @section('content')
 
-<section class="section pt-14 md:pt-20 pb-10">
-    <div class="max-w-2xl">
-        <p class="text-sm uppercase tracking-widest text-brand-red font-medium">Contact</p>
-        <h1 class="mt-3 font-display text-display-md md:text-display-lg font-semibold tracking-tight">Get in touch.</h1>
-        <p class="mt-5 text-lg text-ink-soft">Fastest reply is on WhatsApp. We're usually quick.</p>
+<section class="section pt-10 md:pt-14 pb-8">
+    <div class="grid items-end gap-8 md:gap-12 md:grid-cols-12">
+        <div class="md:col-span-7">
+            <p class="text-sm uppercase tracking-widest text-brand-red font-medium">Contact</p>
+            <h1 class="mt-3 font-display text-display-md md:text-display-lg font-semibold tracking-tight">Get in touch.</h1>
+            <p class="mt-4 text-lg text-ink-soft max-w-xl">Fastest reply is on WhatsApp. We're usually quick.</p>
+        </div>
+        <figure class="md:col-span-5 aspect-[4/3] overflow-hidden rounded-2xl bg-paper-alt">
+            <img src="https://images.pexels.com/photos/1092671/pexels-photo-1092671.jpeg?auto=compress&w=900"
+                 alt="Shop counter" loading="eager"
+                 class="h-full w-full object-cover">
+        </figure>
     </div>
 </section>
 
