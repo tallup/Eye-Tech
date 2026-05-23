@@ -3,7 +3,8 @@
     if (! $service) return;
     $variant = $variant ?? 'default';
 @endphp
-<article class="flex flex-col gap-4 rounded-2xl border hairline bg-paper p-6 transition hover:border-ink/40">
+<article class="group flex flex-col gap-4 rounded-2xl border hairline bg-paper p-6 transition hover:border-ink/40">
+    @include('website.partials.service-image', ['service' => $service])
     <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-brand-red/10 text-brand-red">
         @switch(Str::slug($service->name))
             @case('phone-unlocking-service')
