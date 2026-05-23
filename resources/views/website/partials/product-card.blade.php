@@ -2,11 +2,13 @@
     $product = $product ?? null;
     if (! $product) return;
     $imgPath = $product->image_url ?? $product->image ?? null;
-    $img = $imgPath ? asset($imgPath) : asset('images/placeholder-product.png');
+    $placeholder = asset('images/placeholder-product.png');
+    $img = $imgPath ? asset('images/' . ltrim($imgPath, '/')) : $placeholder;
 @endphp
 <a href="#" class="group block rounded-xl border hairline bg-paper transition hover:border-ink/40">
     <div class="aspect-square overflow-hidden rounded-t-xl bg-paper-alt">
         <img src="{{ $img }}" alt="{{ $product->name }}" loading="lazy"
+             onerror="this.onerror=null;this.src='{{ $placeholder }}'"
              class="h-full w-full object-cover transition duration-500 group-hover:scale-[1.03]">
     </div>
     <div class="p-4">
