@@ -20,6 +20,7 @@ const logout = () => router.post('/logout')
         <nav class="flex items-center gap-4 text-sm">
           <Link v-if="isAdmin" href="/app/dashboard" class="hover:underline">Dashboard</Link>
           <Link href="/app/pos" class="hover:underline">POS</Link>
+          <Link href="/app/sales" class="hover:underline">Sales</Link>
           <span class="text-muted-foreground">{{ user?.name }}</span>
           <Button variant="outline" size="sm" @click="logout">Sign out</Button>
         </nav>
