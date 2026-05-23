@@ -13,7 +13,7 @@
             <p class="mt-4 text-lg text-ink-soft max-w-xl">Fastest reply is on WhatsApp. We're usually quick.</p>
         </div>
         <figure class="md:col-span-5 aspect-[4/3] overflow-hidden rounded-2xl bg-paper-alt">
-            <img src="https://images.pexels.com/photos/1092671/pexels-photo-1092671.jpeg?auto=compress&w=900"
+            <img src="https://images.pexels.com/photos/4068314/pexels-photo-4068314.jpeg?auto=compress&w=900"
                  alt="Shop counter" loading="eager"
                  class="h-full w-full object-cover">
         </figure>
