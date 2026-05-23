@@ -16,17 +16,19 @@ class Service extends Model
         'estimated_duration',
         'category',
         'is_active',
+        'is_featured',
     ];
 
     protected $casts = [
         'price' => 'decimal:2',
         'is_active' => 'boolean',
+        'is_featured' => 'boolean',
     ];
 
     protected static function boot()
     {
         parent::boot();
-        
+
         static::creating(function ($service) {
             if (empty($service->slug)) {
                 $service->slug = Str::slug($service->name);
