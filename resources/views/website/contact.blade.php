@@ -12,10 +12,10 @@
             <h1 class="mt-3 font-display text-display-md md:text-display-lg font-semibold tracking-tight">Get in touch.</h1>
             <p class="mt-4 text-lg text-ink-soft max-w-xl">Fastest reply is on WhatsApp. We're usually quick.</p>
         </div>
-        <figure class="md:col-span-5 aspect-[4/3] overflow-hidden rounded-2xl bg-paper-alt">
-            <img src="https://images.pexels.com/photos/3568520/pexels-photo-3568520.jpeg?auto=compress&w=900"
-                 alt="Shop counter" loading="eager"
-                 class="h-full w-full object-cover">
+        <figure class="md:col-span-5 aspect-[4/3] overflow-hidden rounded-2xl bg-brand-red text-white flex flex-col justify-between p-6">
+            <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+            <p class="font-display text-3xl leading-tight">Message us &mdash; we usually reply in minutes.</p>
+            <p class="text-sm opacity-80">Mon–Sat · 9am to 8pm</p>
         </figure>
     </div>
 </section>
