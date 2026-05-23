@@ -2,12 +2,15 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Product extends Model
 {
+    use HasFactory;
+
     protected $fillable = [
         'name',
         'sku',
@@ -57,15 +60,15 @@ class Product extends Model
         if ($this->stock_quantity == 0) {
             return 'out_of_stock';
         }
-        
+
         if ($this->stock_quantity <= $this->min_stock_level) {
             return 'low_stock';
         }
-        
+
         if ($this->stock_quantity <= $this->min_stock_level * 1.5) {
             return 'warning';
         }
-        
+
         return 'in_stock';
     }
 
@@ -79,7 +82,7 @@ class Product extends Model
         if ($this->cost_price == 0) {
             return 0;
         }
-        
+
         return (($this->selling_price - $this->cost_price) / $this->cost_price) * 100;
     }
 
