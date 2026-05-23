@@ -37,7 +37,7 @@
             </figure>
             <figure class="col-span-2 row-span-3 overflow-hidden rounded-2xl bg-paper-alt">
                 <img src="https://images.pexels.com/photos/3945667/pexels-photo-3945667.jpeg?auto=compress&w=600"
-                     alt="Phone accessories" loading="eager"
+                     alt="Phone accessories on display" loading="eager"
                      class="h-full w-full object-cover">
             </figure>
             <figure class="col-span-2 row-span-3 overflow-hidden rounded-2xl bg-brand-red text-white p-5 flex flex-col justify-between">
@@ -56,7 +56,7 @@
                 ['Phones',      'https://images.pexels.com/photos/788946/pexels-photo-788946.jpeg?auto=compress&w=600'],
                 ['Audio',       'https://images.pexels.com/photos/3587478/pexels-photo-3587478.jpeg?auto=compress&w=600'],
                 ['Chargers',    'https://images.pexels.com/photos/4526481/pexels-photo-4526481.jpeg?auto=compress&w=600'],
-                ['Cases',       'https://images.pexels.com/photos/1647976/pexels-photo-1647976.jpeg?auto=compress&w=600'],
+                ['Cases',       'https://images.pexels.com/photos/5081931/pexels-photo-5081931.jpeg?auto=compress&w=600'],
             ];
         @endphp
         @foreach ($cats as [$name, $src])
@@ -157,12 +157,12 @@
                  class="h-full w-full object-cover">
         </figure>
         <figure class="overflow-hidden rounded-2xl aspect-square bg-paper-alt">
-            <img src="https://images.pexels.com/photos/3945667/pexels-photo-3945667.jpeg?auto=compress&w=600"
+            <img src="https://images.pexels.com/photos/4790285/pexels-photo-4790285.jpeg?auto=compress&w=600"
                  alt="Accessories laid out" loading="lazy"
                  class="h-full w-full object-cover">
         </figure>
         <figure class="overflow-hidden rounded-2xl aspect-square bg-paper-alt">
-            <img src="https://images.pexels.com/photos/4068314/pexels-photo-4068314.jpeg?auto=compress&w=600"
+            <img src="https://images.pexels.com/photos/4068315/pexels-photo-4068315.jpeg?auto=compress&w=600"
                  alt="Workshop bench" loading="lazy"
                  class="h-full w-full object-cover">
         </figure>

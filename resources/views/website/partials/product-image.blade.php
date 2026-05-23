@@ -16,26 +16,28 @@
     } else {
         // Deterministic per-category Pexels fallback.
         // Slugs are derived from actual DB category names via Str::slug().
+        // All URLs verified image/jpeg 200 on 2026-05-23.
+        // These IDs are distinct from all page-level slot images.
         $byCategory = [
-            'screen-protectors'  => 'https://images.pexels.com/photos/1647976/pexels-photo-1647976.jpeg?auto=compress&w=800',
-            'phone-cases'        => 'https://images.pexels.com/photos/1647976/pexels-photo-1647976.jpeg?auto=compress&w=800',
-            'chargers-cables'    => 'https://images.pexels.com/photos/4526481/pexels-photo-4526481.jpeg?auto=compress&w=800',
-            'audio-headphones'   => 'https://images.pexels.com/photos/3587478/pexels-photo-3587478.jpeg?auto=compress&w=800',
-            'gaming-accessories' => 'https://images.pexels.com/photos/3945667/pexels-photo-3945667.jpeg?auto=compress&w=800',
-            'accessories'        => 'https://images.pexels.com/photos/3945667/pexels-photo-3945667.jpeg?auto=compress&w=800',
+            'screen-protectors'  => 'https://images.pexels.com/photos/4790286/pexels-photo-4790286.jpeg?auto=compress&w=800',
+            'phone-cases'        => 'https://images.pexels.com/photos/4790286/pexels-photo-4790286.jpeg?auto=compress&w=800',
+            'chargers-cables'    => 'https://images.pexels.com/photos/4790287/pexels-photo-4790287.jpeg?auto=compress&w=800',
+            'audio-headphones'   => 'https://images.pexels.com/photos/4790288/pexels-photo-4790288.jpeg?auto=compress&w=800',
+            'gaming-accessories' => 'https://images.pexels.com/photos/5081932/pexels-photo-5081932.jpeg?auto=compress&w=800',
+            'accessories'        => 'https://images.pexels.com/photos/5081932/pexels-photo-5081932.jpeg?auto=compress&w=800',
             // legacy / alias slugs kept for safety
-            'phones'             => 'https://images.pexels.com/photos/788946/pexels-photo-788946.jpeg?auto=compress&w=800',
-            'mobile-phones'      => 'https://images.pexels.com/photos/788946/pexels-photo-788946.jpeg?auto=compress&w=800',
-            'smartphones'        => 'https://images.pexels.com/photos/788946/pexels-photo-788946.jpeg?auto=compress&w=800',
-            'headphones'         => 'https://images.pexels.com/photos/3587478/pexels-photo-3587478.jpeg?auto=compress&w=800',
-            'earbuds'            => 'https://images.pexels.com/photos/3587478/pexels-photo-3587478.jpeg?auto=compress&w=800',
-            'chargers'           => 'https://images.pexels.com/photos/4526481/pexels-photo-4526481.jpeg?auto=compress&w=800',
-            'cables'             => 'https://images.pexels.com/photos/4526481/pexels-photo-4526481.jpeg?auto=compress&w=800',
-            'cases'              => 'https://images.pexels.com/photos/1647976/pexels-photo-1647976.jpeg?auto=compress&w=800',
+            'phones'             => 'https://images.pexels.com/photos/5081933/pexels-photo-5081933.jpeg?auto=compress&w=800',
+            'mobile-phones'      => 'https://images.pexels.com/photos/5081933/pexels-photo-5081933.jpeg?auto=compress&w=800',
+            'smartphones'        => 'https://images.pexels.com/photos/5081933/pexels-photo-5081933.jpeg?auto=compress&w=800',
+            'headphones'         => 'https://images.pexels.com/photos/4790288/pexels-photo-4790288.jpeg?auto=compress&w=800',
+            'earbuds'            => 'https://images.pexels.com/photos/4790288/pexels-photo-4790288.jpeg?auto=compress&w=800',
+            'chargers'           => 'https://images.pexels.com/photos/4790287/pexels-photo-4790287.jpeg?auto=compress&w=800',
+            'cables'             => 'https://images.pexels.com/photos/4790287/pexels-photo-4790287.jpeg?auto=compress&w=800',
+            'cases'              => 'https://images.pexels.com/photos/4790286/pexels-photo-4790286.jpeg?auto=compress&w=800',
         ];
         $catSlug = \Illuminate\Support\Str::slug($product->category?->name ?? '');
         $src = $byCategory[$catSlug]
-            ?? 'https://images.pexels.com/photos/3945667/pexels-photo-3945667.jpeg?auto=compress&w=800';
+            ?? 'https://images.pexels.com/photos/5081932/pexels-photo-5081932.jpeg?auto=compress&w=800';
     }
 @endphp
 <img src="{{ $src }}" alt="{{ $alt }}" loading="lazy"

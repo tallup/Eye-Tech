@@ -14,7 +14,7 @@
         </div>
         <figure class="md:col-span-5 aspect-[4/3] overflow-hidden rounded-2xl bg-paper-alt">
             <img src="https://images.pexels.com/photos/4068314/pexels-photo-4068314.jpeg?auto=compress&w=900"
-                 alt="Phone shop counter" loading="eager"
+                 alt="Phone shop interior" loading="eager"
                  class="h-full w-full object-cover">
         </figure>
     </div>
@@ -28,7 +28,7 @@
     </div>
     <div class="reveal">
         @include('website.partials.image-slot', [
-            'src' => 'https://images.pexels.com/photos/4068314/pexels-photo-4068314.jpeg?auto=compress&w=1200',
+            'src' => 'https://images.pexels.com/photos/1092671/pexels-photo-1092671.jpeg?auto=compress&w=1200',
             'alt' => 'Phone shop counter',
             'ratio' => 'aspect-[4/5]',
         ])
