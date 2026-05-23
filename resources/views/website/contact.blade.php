@@ -68,6 +68,31 @@
     </div>
 </section>
 
+{{-- HOURS + MAP --}}
+<section class="section pb-10 md:pb-14 grid gap-6 md:grid-cols-2">
+    <div class="rounded-2xl border hairline p-6 bg-paper">
+        <h2 class="font-display text-xl font-semibold">Opening hours</h2>
+        <dl class="mt-4 divide-y divide-line text-sm">
+            @foreach ([
+                ['Mon – Fri', '9:00 – 20:00'],
+                ['Saturday',  '9:00 – 20:00'],
+                ['Sunday',    'Closed'],
+            ] as $row)
+                <div class="flex items-center justify-between py-2.5">
+                    <dt class="text-ink-soft">{{ $row[0] }}</dt>
+                    <dd class="font-medium tabular-nums">{{ $row[1] }}</dd>
+                </div>
+            @endforeach
+        </dl>
+    </div>
+    <div class="aspect-[4/3] md:aspect-auto rounded-2xl border hairline bg-paper-alt flex items-center justify-center text-center p-6">
+        <div>
+            <p class="font-display text-lg font-semibold">Find the shop</p>
+            <p class="mt-2 text-ink-soft text-sm">Map embed coming soon. For directions, message us on WhatsApp.</p>
+        </div>
+    </div>
+</section>
+
 @include('website.partials.cta-band')
 
 @endsection
