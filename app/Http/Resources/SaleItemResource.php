@@ -19,6 +19,7 @@ class SaleItemResource extends JsonResource
             'unit_price' => (float) $this->unit_price,
             'discount_amount' => (float) $this->discount_amount,
             'total_price' => (float) $this->total_price,
+            'product_image_url' => $this->whenLoaded('product', fn () => $this->product?->image_url),
         ];
     }
 }
