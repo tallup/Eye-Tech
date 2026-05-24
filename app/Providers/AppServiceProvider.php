@@ -6,12 +6,16 @@ use App\Models\Category;
 use App\Models\Product;
 use App\Models\Sales;
 use App\Models\Service;
+use App\Models\ServiceRequest;
 use App\Models\Supplier;
+use App\Models\User;
 use App\Policies\CategoryPolicy;
 use App\Policies\ProductPolicy;
 use App\Policies\SalePolicy;
 use App\Policies\ServicePolicy;
+use App\Policies\ServiceRequestPolicy;
 use App\Policies\SupplierPolicy;
+use App\Policies\UserPolicy;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\ServiceProvider;
 
@@ -36,5 +40,6 @@ class AppServiceProvider extends ServiceProvider
         Gate::policy(Product::class, ProductPolicy::class);
         Gate::policy(Service::class, ServicePolicy::class);
         Gate::policy(ServiceRequest::class, ServiceRequestPolicy::class);
+        Gate::policy(User::class, UserPolicy::class);
     }
 }
