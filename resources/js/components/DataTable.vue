@@ -41,7 +41,9 @@ function navigateTo(url: string) {
           @click="rowLink && navigateTo(rowLink(row))"
         >
           <TableCell v-for="col in columns" :key="col.key">
-            {{ col.render ? col.render(row) : (row as any)[col.key] }}
+            <slot :name="`cell-${col.key}`" :row="row">
+              {{ col.render ? col.render(row) : (row as any)[col.key] }}
+            </slot>
           </TableCell>
         </TableRow>
         <TableRow v-if="data.data.length === 0">

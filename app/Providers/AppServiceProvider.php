@@ -3,7 +3,9 @@
 namespace App\Providers;
 
 use App\Models\Sales;
+use App\Models\Supplier;
 use App\Policies\SalePolicy;
+use App\Policies\SupplierPolicy;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\ServiceProvider;
 
@@ -23,5 +25,6 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         Gate::policy(Sales::class, SalePolicy::class);
+        Gate::policy(Supplier::class, SupplierPolicy::class);
     }
 }

@@ -3,6 +3,7 @@
 use App\Http\Controllers\App\DashboardController;
 use App\Http\Controllers\App\PosController;
 use App\Http\Controllers\App\SaleController;
+use App\Http\Controllers\App\SupplierController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\LogoutController;
 use App\Http\Controllers\WebsiteController;
@@ -37,6 +38,11 @@ Route::middleware('auth')->group(function () {
 Route::middleware('auth')->prefix('app')->group(function () {
     Route::middleware('role:admin')->group(function () {
         Route::get('/dashboard', DashboardController::class)->name('dashboard');
+
+        Route::get('/suppliers', [SupplierController::class, 'index'])->name('suppliers.index');
+        Route::post('/suppliers', [SupplierController::class, 'store'])->name('suppliers.store');
+        Route::put('/suppliers/{supplier}', [SupplierController::class, 'update'])->name('suppliers.update');
+        Route::delete('/suppliers/{supplier}', [SupplierController::class, 'destroy'])->name('suppliers.destroy');
     });
     Route::get('/pos', [PosController::class, 'index'])->name('pos');
     Route::post('/pos/checkout', [PosController::class, 'checkout'])->name('pos.checkout');
