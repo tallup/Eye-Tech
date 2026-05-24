@@ -58,6 +58,11 @@ class Sales extends Model
 
     public function calculateTotals()
     {
+        $itemCount = $this->salesItems()->count();
+        if ($itemCount === 0) {
+            return;
+        }
+
         $subtotal = $this->salesItems()->sum('total_price');
         $discount = $this->discount_amount ?? 0;
         $total = $subtotal - $discount;
