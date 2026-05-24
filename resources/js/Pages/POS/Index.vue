@@ -5,10 +5,13 @@ import Cart from './components/Cart.vue'
 import { usePosCart } from './composables/usePosCart'
 import type { Category, Product } from '@/types/models'
 
-defineProps<{
-  products: Product[]
-  categories: Category[]
+const props = defineProps<{
+  products: { data: Product[] } | Product[]
+  categories: { data: Category[] } | Category[]
 }>()
+
+const productList = Array.isArray(props.products) ? props.products : props.products.data
+const categoryList = Array.isArray(props.categories) ? props.categories : props.categories.data
 
 const { lines, subtotal, total, addItem, setQuantity, remove, clear } = usePosCart()
 </script>
@@ -18,8 +21,8 @@ const { lines, subtotal, total, addItem, setQuantity, remove, clear } = usePosCa
     <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
       <div class="lg:col-span-2">
         <ProductGrid
-          :products="products"
-          :categories="categories"
+          :products="productList"
+          :categories="categoryList"
           @select="addItem"
         />
       </div>
