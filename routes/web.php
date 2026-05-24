@@ -3,6 +3,7 @@
 use App\Http\Controllers\App\CategoryController;
 use App\Http\Controllers\App\DashboardController;
 use App\Http\Controllers\App\PosController;
+use App\Http\Controllers\App\ProductController;
 use App\Http\Controllers\App\SaleController;
 use App\Http\Controllers\App\SupplierController;
 use App\Http\Controllers\Auth\LoginController;
@@ -51,6 +52,13 @@ Route::middleware('auth')->prefix('app')->group(function () {
         Route::post('/categories', [CategoryController::class, 'store'])->name('categories.store');
         Route::put('/categories/{category}', [CategoryController::class, 'update'])->name('categories.update');
         Route::delete('/categories/{category}', [CategoryController::class, 'destroy'])->name('categories.destroy');
+
+        Route::get('/products', [ProductController::class, 'index'])->name('products.index');
+        Route::get('/products/create', [ProductController::class, 'create'])->name('products.create');
+        Route::post('/products', [ProductController::class, 'store'])->name('products.store');
+        Route::get('/products/{product}/edit', [ProductController::class, 'edit'])->name('products.edit');
+        Route::put('/products/{product}', [ProductController::class, 'update'])->name('products.update');
+        Route::delete('/products/{product}', [ProductController::class, 'destroy'])->name('products.destroy');
     });
     Route::get('/pos', [PosController::class, 'index'])->name('pos');
     Route::post('/pos/checkout', [PosController::class, 'checkout'])->name('pos.checkout');
