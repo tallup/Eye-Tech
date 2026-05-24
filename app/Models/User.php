@@ -8,7 +8,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Spatie\Permission\Traits\HasRoles;
 
-class User extends Authenticatable implements \Filament\Models\Contracts\FilamentUser
+class User extends Authenticatable
 {
     /** @use HasFactory<\Database\Factories\UserFactory> */
     use HasFactory, HasRoles, Notifiable;
@@ -51,11 +51,6 @@ class User extends Authenticatable implements \Filament\Models\Contracts\Filamen
             'password' => 'hashed',
             'role' => 'string',
         ];
-    }
-
-    public function canAccessPanel(\Filament\Panel $panel): bool
-    {
-        return $this->role === 'admin';
     }
 
     protected static function boot()
