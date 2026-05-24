@@ -13,7 +13,7 @@ class SaleController extends Controller
 {
     public function index(Request $request): Response
     {
-        $query = Sales::with('user')->orderByDesc('created_at');
+        $query = Sales::with(['user', 'items.product'])->orderByDesc('created_at');
 
         if ($request->user()->role !== 'admin') {
             $query->where('user_id', $request->user()->id);
@@ -29,7 +29,7 @@ class SaleController extends Controller
     public function show(Sales $sale): Response
     {
         $this->authorize('view', $sale);
-        $sale->load(['items', 'user']);
+        $sale->load(['items.product', 'user']);
 
         return Inertia::render('Sales/Show', [
             'sale' => SaleResource::make($sale),

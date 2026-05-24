@@ -41,13 +41,28 @@ function triggerPrint() {
             <span v-if="sale.data.customer_phone">— {{ sale.data.customer_phone }}</span>
           </div>
 
-          <div class="border-t border-b py-2 space-y-1">
-            <div v-for="item in sale.data.items" :key="item.id" class="flex justify-between text-sm">
-              <div class="flex-1">
-                {{ item.item_name }}
-                <span class="text-muted-foreground"> x {{ item.quantity }}</span>
+          <div class="border-t border-b py-2 space-y-3">
+            <div v-for="item in sale.data.items" :key="item.id" class="flex items-center gap-3 text-sm">
+              <div class="w-14 h-14 bg-muted rounded overflow-hidden flex items-center justify-center shrink-0 print:hidden">
+                <img
+                  v-if="(item as any).product_image_url"
+                  :src="(item as any).product_image_url"
+                  :alt="item.item_name"
+                  class="w-full h-full object-cover"
+                  loading="lazy"
+                  @error="($event.target as HTMLImageElement).style.display = 'none'"
+                />
+                <span v-else class="text-xs text-muted-foreground">—</span>
               </div>
-              <div class="font-medium">{{ Number(item.total_price).toFixed(2) }}</div>
+              <div class="flex-1 min-w-0">
+                <div class="font-medium truncate">{{ item.item_name }}</div>
+                <div class="text-xs text-muted-foreground">
+                  {{ item.item_sku ?? '' }}
+                  <span v-if="item.item_sku"> · </span>
+                  {{ item.quantity }} × {{ Number(item.unit_price).toFixed(2) }}
+                </div>
+              </div>
+              <div class="font-medium whitespace-nowrap">{{ Number(item.total_price).toFixed(2) }}</div>
             </div>
           </div>
 
