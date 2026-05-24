@@ -4,6 +4,7 @@ use App\Http\Controllers\App\CategoryController;
 use App\Http\Controllers\App\DashboardController;
 use App\Http\Controllers\App\PosController;
 use App\Http\Controllers\App\ProductController;
+use App\Http\Controllers\App\ProfileController;
 use App\Http\Controllers\App\SaleController;
 use App\Http\Controllers\App\ServiceController;
 use App\Http\Controllers\App\ServiceRequestController;
@@ -86,4 +87,7 @@ Route::middleware('auth')->prefix('app')->group(function () {
 
     Route::get('/service-requests', [ServiceRequestController::class, 'index'])->name('service-requests.index');
     Route::get('/service-requests/{service_request}', [ServiceRequestController::class, 'show'])->name('service-requests.show');
+
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::put('/profile', [ProfileController::class, 'update'])->name('profile.update');
 });
