@@ -50,11 +50,16 @@ class DashboardStatsTest extends TestCase
                 ->component('Dashboard')
                 ->where('stats.today_sales_total', 100.0)
                 ->where('stats.today_sales_count', 1)
-                ->where('stats.low_stock_count', 2)
+                ->where('stats.out_of_stock_count', 2)
+                ->has('stats.inventory_value_cost')
+                ->has('stats.inventory_value_retail')
+                ->has('stats.total_stock_units')
+                ->has('stats.week_sales_total')
+                ->has('stats.month_sales_total')
             );
     }
 
-    public function test_dashboard_includes_seven_day_sales_chart(): void
+    public function test_dashboard_includes_14_day_sales_chart(): void
     {
         $admin = User::factory()->create(['role' => 'admin']);
         $admin->syncRoles(['admin']);
@@ -62,6 +67,14 @@ class DashboardStatsTest extends TestCase
         $this->actingAs($admin)
             ->withoutVite()
             ->get('/app/dashboard')
-            ->assertInertia(fn ($p) => $p->has('sales_chart', 7));
+            ->assertInertia(fn ($p) => $p
+                ->has('sales_chart', 14)
+                ->has('top_products')
+                ->has('top_categories')
+                ->has('payment_breakdown')
+                ->has('recent_sales')
+                ->has('recent_movements')
+                ->has('low_stock_products')
+            );
     }
 }
