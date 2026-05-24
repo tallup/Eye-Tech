@@ -26,14 +26,6 @@ Route::get('/test', function () {
     return 'Test works';
 });
 
-// Custom Reports Route
-Route::get('/custom-reports', function () {
-    $customReports = new \App\Filament\Pages\CustomReports;
-    $data = $customReports->getViewData();
-
-    return view('custom-reports', compact('data'));
-})->name('custom-reports');
-
 Route::middleware('guest')->group(function () {
     Route::get('/login', [LoginController::class, 'create'])->name('login');
     Route::post('/login', [LoginController::class, 'store']);
