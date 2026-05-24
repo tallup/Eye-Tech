@@ -5,6 +5,7 @@ use App\Http\Controllers\App\DashboardController;
 use App\Http\Controllers\App\PosController;
 use App\Http\Controllers\App\ProductController;
 use App\Http\Controllers\App\SaleController;
+use App\Http\Controllers\App\ServiceController;
 use App\Http\Controllers\App\StockMovementController;
 use App\Http\Controllers\App\SupplierController;
 use App\Http\Controllers\Auth\LoginController;
@@ -62,6 +63,11 @@ Route::middleware('auth')->prefix('app')->group(function () {
         Route::delete('/products/{product}', [ProductController::class, 'destroy'])->name('products.destroy');
 
         Route::get('/stock-movements', [StockMovementController::class, 'index'])->name('stock-movements.index');
+
+        Route::get('/services', [ServiceController::class, 'index'])->name('services.index');
+        Route::post('/services', [ServiceController::class, 'store'])->name('services.store');
+        Route::put('/services/{service}', [ServiceController::class, 'update'])->name('services.update');
+        Route::delete('/services/{service}', [ServiceController::class, 'destroy'])->name('services.destroy');
     });
     Route::get('/pos', [PosController::class, 'index'])->name('pos');
     Route::post('/pos/checkout', [PosController::class, 'checkout'])->name('pos.checkout');
