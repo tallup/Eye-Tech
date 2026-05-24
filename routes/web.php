@@ -6,14 +6,13 @@ use App\Http\Controllers\App\PosController;
 use App\Http\Controllers\App\ProductController;
 use App\Http\Controllers\App\SaleController;
 use App\Http\Controllers\App\ServiceController;
+use App\Http\Controllers\App\ServiceRequestController;
 use App\Http\Controllers\App\StockMovementController;
 use App\Http\Controllers\App\SupplierController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\LogoutController;
 use App\Http\Controllers\WebsiteController;
 use Illuminate\Support\Facades\Route;
-
-// CategoryController imported above — routes registered in role:admin group below
 
 Route::get('/', [WebsiteController::class, 'index'])->name('home');
 Route::get('/about', [WebsiteController::class, 'about'])->name('about');
@@ -68,10 +67,17 @@ Route::middleware('auth')->prefix('app')->group(function () {
         Route::post('/services', [ServiceController::class, 'store'])->name('services.store');
         Route::put('/services/{service}', [ServiceController::class, 'update'])->name('services.update');
         Route::delete('/services/{service}', [ServiceController::class, 'destroy'])->name('services.destroy');
+
+        Route::post('/service-requests', [ServiceRequestController::class, 'store'])->name('service-requests.store');
+        Route::put('/service-requests/{service_request}', [ServiceRequestController::class, 'update'])->name('service-requests.update');
+        Route::delete('/service-requests/{service_request}', [ServiceRequestController::class, 'destroy'])->name('service-requests.destroy');
     });
     Route::get('/pos', [PosController::class, 'index'])->name('pos');
     Route::post('/pos/checkout', [PosController::class, 'checkout'])->name('pos.checkout');
 
     Route::get('/sales', [SaleController::class, 'index'])->name('sales.index');
     Route::get('/sales/{sale}', [SaleController::class, 'show'])->name('sales.show');
+
+    Route::get('/service-requests', [ServiceRequestController::class, 'index'])->name('service-requests.index');
+    Route::get('/service-requests/{service_request}', [ServiceRequestController::class, 'show'])->name('service-requests.show');
 });
