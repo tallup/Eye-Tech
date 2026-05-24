@@ -2,12 +2,15 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Support\Str;
 
 class ServiceRequest extends Model
 {
+    use HasFactory;
+
     protected $fillable = [
         'request_number',
         'customer_name',
@@ -32,10 +35,10 @@ class ServiceRequest extends Model
     protected static function boot()
     {
         parent::boot();
-        
+
         static::creating(function ($serviceRequest) {
             if (empty($serviceRequest->request_number)) {
-                $serviceRequest->request_number = 'SR-' . strtoupper(Str::random(8));
+                $serviceRequest->request_number = 'SR-'.strtoupper(Str::random(8));
             }
         });
     }
@@ -47,7 +50,7 @@ class ServiceRequest extends Model
 
     public function getStatusColorAttribute(): string
     {
-        return match($this->status) {
+        return match ($this->status) {
             'pending' => 'warning',
             'in_progress' => 'info',
             'completed' => 'success',

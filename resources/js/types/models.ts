@@ -80,6 +80,26 @@ export interface Service {
   created_at: string
 }
 
+export type ServiceRequestStatus = 'pending' | 'in_progress' | 'completed' | 'cancelled'
+
+export interface ServiceRequest {
+  id: number
+  request_number: string
+  customer_name: string
+  customer_phone: string
+  customer_email: string | null
+  service_id: number
+  service: { id: number; name: string; price: number } | null
+  device_description: string
+  problem_description: string
+  status: ServiceRequestStatus
+  estimated_cost: number | null
+  final_cost: number | null
+  notes: string | null
+  completed_at: string | null
+  created_at: string
+}
+
 export interface CartLine {
   product_id: number
   name: string
