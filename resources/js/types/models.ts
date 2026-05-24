@@ -67,6 +67,19 @@ export interface Sale {
   created_at: string
 }
 
+export interface Service {
+  id: number
+  name: string
+  slug: string
+  description: string
+  price: number
+  estimated_duration: number | null
+  category: string | null
+  is_active: boolean
+  is_featured: boolean
+  created_at: string
+}
+
 export interface CartLine {
   product_id: number
   name: string
