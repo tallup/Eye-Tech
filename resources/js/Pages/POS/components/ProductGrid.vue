@@ -10,6 +10,11 @@ const emit = defineEmits<{ select: [product: Product] }>()
 
 const search = ref('')
 const selectedCategoryId = ref<number | null>(null)
+const brokenImages = ref<Set<number>>(new Set())
+
+function onImageError(productId: number) {
+  brokenImages.value.add(productId)
+}
 
 const filtered = computed(() =>
   props.products.filter((p) => {
@@ -53,11 +58,22 @@ const filtered = computed(() =>
       <Card
         v-for="p in filtered"
         :key="p.id"
-        class="cursor-pointer hover:border-primary transition-colors"
+        class="cursor-pointer hover:border-primary transition-colors overflow-hidden"
         @click="emit('select', p)"
       >
-        <CardContent class="p-4">
-          <div class="font-medium">{{ p.name }}</div>
+        <div class="aspect-square bg-muted flex items-center justify-center overflow-hidden">
+          <img
+            v-if="p.image_url && !brokenImages.has(p.id)"
+            :src="p.image_url"
+            :alt="p.name"
+            class="w-full h-full object-cover"
+            loading="lazy"
+            @error="onImageError(p.id)"
+          />
+          <div v-else class="text-muted-foreground text-xs px-2 text-center">No image</div>
+        </div>
+        <CardContent class="p-3">
+          <div class="font-medium text-sm line-clamp-2">{{ p.name }}</div>
           <div class="text-xs text-muted-foreground">{{ p.sku }}</div>
           <div class="mt-2 flex items-center justify-between">
             <span class="font-semibold">{{ p.selling_price.toFixed(2) }}</span>
