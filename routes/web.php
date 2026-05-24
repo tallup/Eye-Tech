@@ -5,6 +5,7 @@ use App\Http\Controllers\App\DashboardController;
 use App\Http\Controllers\App\PosController;
 use App\Http\Controllers\App\ProductController;
 use App\Http\Controllers\App\ProfileController;
+use App\Http\Controllers\App\ReportController;
 use App\Http\Controllers\App\SaleController;
 use App\Http\Controllers\App\ServiceController;
 use App\Http\Controllers\App\ServiceRequestController;
@@ -78,6 +79,9 @@ Route::middleware('auth')->prefix('app')->group(function () {
         Route::post('/users', [UserController::class, 'store'])->name('users.store');
         Route::put('/users/{user}', [UserController::class, 'update'])->name('users.update');
         Route::delete('/users/{user}', [UserController::class, 'destroy'])->name('users.destroy');
+
+        Route::get('/reports', [ReportController::class, 'index'])->name('reports.index');
+        Route::get('/reports/custom', [ReportController::class, 'custom'])->name('reports.custom');
     });
     Route::get('/pos', [PosController::class, 'index'])->name('pos');
     Route::post('/pos/checkout', [PosController::class, 'checkout'])->name('pos.checkout');
