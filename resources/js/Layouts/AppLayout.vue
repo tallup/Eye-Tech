@@ -25,7 +25,11 @@ const logout = () => router.post('/logout')
           <Link v-if="isAdmin" href="/app/categories" class="hover:underline">Categories</Link>
           <Link v-if="isAdmin" href="/app/suppliers" class="hover:underline">Suppliers</Link>
           <Link v-if="isAdmin" href="/app/stock-movements" class="hover:underline">Stock</Link>
-          <span class="text-muted-foreground">{{ user?.name }}</span>
+          <Link v-if="isAdmin" href="/app/services" class="hover:underline">Services</Link>
+          <Link href="/app/service-requests" class="hover:underline">Requests</Link>
+          <Link v-if="isAdmin" href="/app/users" class="hover:underline">Users</Link>
+          <Link v-if="isAdmin" href="/app/reports" class="hover:underline">Reports</Link>
+          <Link href="/app/profile" class="hover:underline">{{ user?.name }}</Link>
           <Button variant="outline" size="sm" @click="logout">Sign out</Button>
         </nav>
       </div>
