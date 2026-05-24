@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\App\CategoryController;
 use App\Http\Controllers\App\DashboardController;
 use App\Http\Controllers\App\PosController;
 use App\Http\Controllers\App\SaleController;
@@ -8,6 +9,8 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\LogoutController;
 use App\Http\Controllers\WebsiteController;
 use Illuminate\Support\Facades\Route;
+
+// CategoryController imported above — routes registered in role:admin group below
 
 Route::get('/', [WebsiteController::class, 'index'])->name('home');
 Route::get('/about', [WebsiteController::class, 'about'])->name('about');
@@ -43,6 +46,11 @@ Route::middleware('auth')->prefix('app')->group(function () {
         Route::post('/suppliers', [SupplierController::class, 'store'])->name('suppliers.store');
         Route::put('/suppliers/{supplier}', [SupplierController::class, 'update'])->name('suppliers.update');
         Route::delete('/suppliers/{supplier}', [SupplierController::class, 'destroy'])->name('suppliers.destroy');
+
+        Route::get('/categories', [CategoryController::class, 'index'])->name('categories.index');
+        Route::post('/categories', [CategoryController::class, 'store'])->name('categories.store');
+        Route::put('/categories/{category}', [CategoryController::class, 'update'])->name('categories.update');
+        Route::delete('/categories/{category}', [CategoryController::class, 'destroy'])->name('categories.destroy');
     });
     Route::get('/pos', [PosController::class, 'index'])->name('pos');
     Route::post('/pos/checkout', [PosController::class, 'checkout'])->name('pos.checkout');
