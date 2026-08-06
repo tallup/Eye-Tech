@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -9,6 +10,8 @@ use Illuminate\Support\Str;
 
 class Sales extends Model
 {
+    use HasFactory;
+
     protected $fillable = [
         'sale_number',
         'customer_name',
@@ -34,10 +37,10 @@ class Sales extends Model
     protected static function boot()
     {
         parent::boot();
-        
+
         static::creating(function ($sale) {
             if (empty($sale->sale_number)) {
-                $sale->sale_number = 'SALE-' . date('Ymd') . '-' . strtoupper(Str::random(6));
+                $sale->sale_number = 'SALE-'.date('Ymd').'-'.strtoupper(Str::random(6));
             }
         });
 
@@ -55,6 +58,11 @@ class Sales extends Model
 
     public function calculateTotals()
     {
+        $itemCount = $this->salesItems()->count();
+        if ($itemCount === 0) {
+            return;
+        }
+
         $subtotal = $this->salesItems()->sum('total_price');
         $discount = $this->discount_amount ?? 0;
         $total = $subtotal - $discount;
@@ -75,9 +83,17 @@ class Sales extends Model
         return $this->hasMany(SalesItem::class, 'sale_id');
     }
 
+    /**
+     * Alias used by POS controllers and API resources.
+     */
+    public function items(): HasMany
+    {
+        return $this->hasMany(SalesItem::class, 'sale_id');
+    }
+
     public function getStatusColorAttribute(): string
     {
-        return match($this->status) {
+        return match ($this->status) {
             'pending' => 'warning',
             'completed' => 'success',
             'cancelled' => 'danger',
@@ -88,7 +104,7 @@ class Sales extends Model
 
     public function getPaymentMethodLabelAttribute(): string
     {
-        return match($this->payment_method) {
+        return match ($this->payment_method) {
             'cash' => 'Cash',
             'card' => 'Card',
             'mobile_money' => 'Mobile Money',

@@ -2,11 +2,14 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class SalesItem extends Model
 {
+    use HasFactory;
+
     protected $fillable = [
         'sale_id',
         'product_id',
@@ -28,25 +31,25 @@ class SalesItem extends Model
     protected static function boot()
     {
         parent::boot();
-        
+
         static::creating(function ($salesItem) {
             // Set default values for required fields
             $salesItem->unit_price = $salesItem->unit_price ?? 0;
             $salesItem->discount_amount = $salesItem->discount_amount ?? 0;
             $salesItem->quantity = $salesItem->quantity ?? 1;
         });
-        
+
         static::saving(function ($salesItem) {
             // Ensure unit_price is not null
             if (is_null($salesItem->unit_price)) {
                 $salesItem->unit_price = 0;
             }
-            
+
             // Ensure discount_amount is not null
             if (is_null($salesItem->discount_amount)) {
                 $salesItem->discount_amount = 0;
             }
-            
+
             $salesItem->total_price = ($salesItem->quantity * $salesItem->unit_price) - $salesItem->discount_amount;
         });
 
@@ -55,7 +58,7 @@ class SalesItem extends Model
             if ($salesItem->product) {
                 $previousQuantity = $salesItem->product->stock_quantity;
                 $salesItem->product->decrement('stock_quantity', $salesItem->quantity);
-                
+
                 // Record stock movement
                 \App\Models\StockMovement::create([
                     'product_id' => $salesItem->product_id,
@@ -78,7 +81,7 @@ class SalesItem extends Model
             if ($salesItem->product) {
                 $previousQuantity = $salesItem->product->stock_quantity;
                 $salesItem->product->increment('stock_quantity', $salesItem->quantity);
-                
+
                 // Record stock movement for restoration
                 \App\Models\StockMovement::create([
                     'product_id' => $salesItem->product_id,

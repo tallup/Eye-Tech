@@ -22,6 +22,8 @@ class DatabaseSeeder extends Seeder
 
         // Run our custom seeders
         $this->call([
+            RolesSeeder::class,
+            AdminUserSeeder::class,
             CategorySeeder::class,
             SupplierSeeder::class,
             ServiceSeeder::class,

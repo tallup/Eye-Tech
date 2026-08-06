@@ -1,264 +1,245 @@
 @extends('layouts.app')
 
-@section('title', 'EyeTech - Makes Your Day Easy')
+@section('title', 'EyeTech — Phones, accessories & trusted repair')
+@section('meta_description', 'EyeTech sells phones and accessories and offers same-day repair, unlocking and software services in Serrekunda.')
 
 @section('content')
-<!-- Hero Section with Ken Burns Effect -->
-<section class="relative min-h-screen flex items-center justify-center overflow-hidden">
-    <!-- Animated Background -->
-    <div class="absolute inset-0 ken-burns parallax-bg" style="background-image: linear-gradient(135deg, rgba(220, 38, 38, 0.8), rgba(31, 41, 55, 0.9)), url('https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80');">
-        <!-- Floating geometric shapes -->
-        <div class="absolute inset-0">
-            <div class="absolute top-20 left-10 w-20 h-20 bg-white/10 rounded-full floating" style="animation-delay: 0s;"></div>
-            <div class="absolute top-40 right-20 w-16 h-16 bg-red-500/20 rounded-lg floating" style="animation-delay: 2s;"></div>
-            <div class="absolute bottom-40 left-20 w-12 h-12 bg-gray-500/20 rounded-full floating" style="animation-delay: 4s;"></div>
-            <div class="absolute bottom-20 right-10 w-24 h-24 bg-white/5 rounded-lg floating" style="animation-delay: 6s;"></div>
-        </div>
-    </div>
-    
-    <!-- Hero Content -->
-    <div class="relative z-10 text-center px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto">
-        <div class="card-3d glass p-12 rounded-3xl" style="background: rgba(31, 41, 55, 0.9); backdrop-filter: blur(20px); border: 1px solid rgba(255, 255, 255, 0.2);">
-            <h1 class="text-6xl md:text-8xl font-bold mb-8 text-white leading-tight">
-                EyeTech
+
+{{-- HERO --}}
+<section class="section pt-10 md:pt-14 pb-12 md:pb-16">
+    <div class="grid items-center gap-10 md:gap-12 md:grid-cols-12">
+        <div class="reveal md:col-span-6">
+            <p class="text-sm uppercase tracking-widest text-brand-red font-medium">Mobile phones &amp; repair</p>
+            <h1 class="mt-3 font-display text-display-lg md:text-display-xl font-semibold tracking-tight">
+                Phones,<br>accessories &amp;<br><span class="text-brand-red">trusted repair.</span>
             </h1>
-            <p class="text-2xl md:text-4xl font-light mb-8 text-white">
-                Makes Your Day Easy
+            <p class="mt-5 text-lg text-ink-soft max-w-md">
+                Visit our shop or message us — we'll sort you out the same day.
             </p>
-            <p class="text-lg md:text-xl mb-12 text-white max-w-4xl mx-auto leading-relaxed">
-                Your trusted partner for mobile phone repairs, accessories, and technical services. 
-                We provide professional solutions with cutting-edge technology and exceptional customer care.
-            </p>
-            <div class="flex flex-col sm:flex-row gap-6 justify-center items-center">
-                <a href="{{ route('services') }}" class="group relative px-8 py-4 bg-gradient-to-r from-red-500 to-red-700 rounded-xl font-semibold text-white hover:from-red-600 hover:to-red-800 transition-all duration-300 shadow-lg hover:shadow-red-500/25 transform hover:scale-105">
-                    <span class="relative z-10">Our Services</span>
-                    <div class="absolute inset-0 bg-gradient-to-r from-red-600 to-red-800 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                </a>
-                <a href="{{ route('contact') }}" class="group px-8 py-4 glass border-2 border-white/20 rounded-xl font-semibold text-white hover:bg-white/10 hover:border-white/40 transition-all duration-300 transform hover:scale-105">
-                    Contact Us
+            <div class="mt-6 flex flex-wrap gap-3">
+                <a href="#shop" class="btn-primary">Visit shop</a>
+                <a href="{{ \App\Support\Whatsapp::url() }}" target="_blank" rel="noopener" class="btn-outline">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+                    WhatsApp us
                 </a>
             </div>
+            <div class="mt-6 flex flex-wrap items-center gap-x-6 gap-y-2 text-sm text-ink-soft">
+                <span class="inline-flex items-center gap-1.5"><span class="text-brand-red">★★★★★</span> 4.9</span>
+                <span class="pill-open">Open today 9am–8pm</span>
+                <a href="{{ route('contact') }}" class="hover:text-ink">Map ▸</a>
+            </div>
         </div>
-    </div>
-    
-    <!-- Scroll Indicator -->
-    <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-        <svg class="w-6 h-6 text-white/70" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/>
-        </svg>
+        <div class="reveal md:col-span-6 grid grid-cols-6 grid-rows-6 gap-3 h-[460px] md:h-[520px]">
+            <figure class="col-span-4 row-span-6 overflow-hidden rounded-2xl bg-paper-alt">
+                <img src="https://images.pexels.com/photos/1092644/pexels-photo-1092644.jpeg?auto=compress&w=1000"
+                     alt="Customer holding a smartphone" loading="eager"
+                     class="h-full w-full object-cover">
+            </figure>
+            <figure class="col-span-2 row-span-3 overflow-hidden rounded-2xl bg-paper-alt">
+                <img src="https://images.pexels.com/photos/3945667/pexels-photo-3945667.jpeg?auto=compress&w=600"
+                     alt="Phone accessories on display" loading="eager"
+                     class="h-full w-full object-cover">
+            </figure>
+            <figure class="col-span-2 row-span-3 overflow-hidden rounded-2xl bg-brand-red text-white p-5 flex flex-col justify-between">
+                <p class="text-xs uppercase tracking-widest opacity-80">Same-day</p>
+                <p class="font-display text-2xl leading-tight">Repairs done in hours.</p>
+            </figure>
+        </div>
     </div>
 </section>
 
-<!-- Services Section -->
-<section class="py-20 relative">
-    <!-- Background Pattern -->
-    <div class="absolute inset-0 opacity-5">
-        <div class="absolute inset-0" style="background-image: url('data:image/svg+xml,<svg width="40" height="40" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><g fill="%23ffffff" fill-opacity="0.1"><circle cx="20" cy="20" r="1"/></g></svg>')"></div>
-    </div>
-    
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div class="text-center mb-16">
-            <h2 class="text-4xl md:text-6xl font-bold text-white mb-6">
-                Our <span class="text-red-500">Services</span>
-            </h2>
-            <p class="text-xl text-white max-w-3xl mx-auto">
-                Comprehensive mobile phone and accessories services to keep your devices running smoothly
-            </p>
-        </div>
-        
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            @forelse($services as $service)
-            <div class="card-3d glass p-8 rounded-2xl hover:bg-red-500/20 transition-all duration-300 group" style="background: rgba(55, 65, 81, 0.8); backdrop-filter: blur(20px); border: 1px solid rgba(255, 255, 255, 0.1);">
-                <div class="text-center">
-                    <div class="w-20 h-20 bg-gradient-to-br from-red-500 to-red-700 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
-                        <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"></path>
-                        </svg>
-                    </div>
-                    <h3 class="text-2xl font-bold text-white mb-4">{{ $service->name }}</h3>
-                    <p class="text-white mb-6 leading-relaxed">{{ Str::limit($service->description, 120) }}</p>
-                    <div class="flex justify-between items-center">
-                        <div class="text-3xl font-bold text-red-500">D{{ number_format($service->price, 2) }}</div>
-                        <div class="text-sm text-white">{{ $service->estimated_duration }} min</div>
-                    </div>
+{{-- CATEGORIES --}}
+<section class="section pb-10 md:pb-12">
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4">
+        @php
+            $cats = [
+                ['Phones',      'https://images.pexels.com/photos/788946/pexels-photo-788946.jpeg?auto=compress&w=600'],
+                ['Audio',       'https://images.pexels.com/photos/3587478/pexels-photo-3587478.jpeg?auto=compress&w=600'],
+                ['Chargers',    'https://images.pexels.com/photos/4526481/pexels-photo-4526481.jpeg?auto=compress&w=600'],
+                ['Cases',       'https://images.pexels.com/photos/1647976/pexels-photo-1647976.jpeg?auto=compress&w=600'],
+            ];
+        @endphp
+        @foreach ($cats as [$name, $src])
+            <a href="#shop" class="group relative aspect-[4/3] overflow-hidden rounded-2xl bg-paper-alt">
+                <img src="{{ $src }}" alt="{{ $name }}" loading="lazy"
+                     class="absolute inset-0 h-full w-full object-cover transition duration-500 group-hover:scale-[1.04]">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/55 via-black/0 to-transparent"></div>
+                <div class="absolute bottom-3 left-4 right-4 text-white font-display text-lg font-semibold">
+                    {{ $name }}
                 </div>
-            </div>
-            @empty
-            <div class="col-span-full text-center py-16">
-                <div class="glass p-12 rounded-2xl">
-                    <p class="text-white/50 text-xl">No services available at the moment.</p>
-                </div>
-            </div>
-            @endforelse
-        </div>
-        
-        <div class="text-center mt-16">
-            <a href="{{ route('services') }}" class="inline-flex items-center px-8 py-4 bg-gradient-to-r from-red-500 to-red-700 rounded-xl font-semibold text-white hover:from-red-600 hover:to-red-800 transition-all duration-300 shadow-lg hover:shadow-red-500/25 transform hover:scale-105">
-                View All Services
-                <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
-                </svg>
             </a>
-        </div>
+        @endforeach
     </div>
 </section>
 
-<!-- Featured Products Section -->
-@if($featuredProducts->count() > 0)
-<section class="py-20 relative">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center mb-16">
-            <h2 class="text-4xl md:text-6xl font-bold text-white mb-6">
-                Featured <span class="text-red-500">Products</span>
-            </h2>
-            <p class="text-xl text-white max-w-3xl mx-auto">
-                Quality mobile phones and accessories at competitive prices
-            </p>
-        </div>
-        
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+{{-- POPULAR PRODUCTS --}}
+<section id="shop" class="section section-y border-t hairline">
+    <div class="flex items-end justify-between gap-4">
+        <h2 class="font-display text-2xl md:text-3xl font-semibold tracking-tight">Popular right now</h2>
+        <a href="{{ route('services') }}" class="text-sm font-medium hover:text-brand-red">View all ▸</a>
+    </div>
+    @if($featuredProducts->isEmpty())
+        <p class="mt-8 text-ink-soft">No products available right now.</p>
+    @else
+        <div class="mt-8 grid gap-5 grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
             @foreach($featuredProducts as $product)
-            <div class="card-3d glass overflow-hidden rounded-2xl hover:bg-red-500/20 transition-all duration-300 group" style="background: rgba(55, 65, 81, 0.8); backdrop-filter: blur(20px); border: 1px solid rgba(255, 255, 255, 0.1);">
-                <!-- Product Image -->
-                <div class="h-64 bg-gradient-to-br from-gray-800 to-gray-900 flex items-center justify-center relative overflow-hidden">
-                    <div class="absolute inset-0 bg-gradient-to-br from-red-500/20 to-gray-500/20"></div>
-                    @if($product->image && file_exists(public_path('storage/' . $product->image)))
-                        <img src="{{ asset('storage/' . $product->image) }}" 
-                             alt="{{ $product->name }}" 
-                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                             loading="lazy"
-                             onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                        <!-- Fallback content (hidden by default) -->
-                        <div class="absolute inset-0 flex items-center justify-center" style="display: none;">
-                            <div class="text-center">
-                                <div class="w-20 h-20 bg-white/20 rounded-2xl flex items-center justify-center mx-auto mb-4">
-                                    <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
-                                    </svg>
-                                </div>
-                                <p class="text-white text-sm font-medium">{{ $product->brand }} {{ $product->model }}</p>
-                            </div>
-                        </div>
-                    @else
-                        <div class="relative z-10 text-center">
-                            <div class="w-20 h-20 bg-white/20 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
-                                <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
-                                </svg>
-                            </div>
-                            <p class="text-white text-sm font-medium">{{ $product->brand }} {{ $product->model }}</p>
-                            <p class="text-white/70 text-xs mt-1">No image available</p>
-                        </div>
-                    @endif
+                <div class="reveal">
+                    @include('website.partials.product-card', ['product' => $product])
                 </div>
-                <div class="p-6">
-                    <h3 class="text-xl font-bold text-white mb-3">{{ $product->name }}</h3>
-                    <p class="text-white mb-4 text-sm leading-relaxed">{{ Str::limit($product->description, 80) }}</p>
-                    <div class="flex justify-between items-center">
-                        <div class="text-2xl font-bold text-red-500">D{{ number_format($product->selling_price, 2) }}</div>
-                        <div class="text-sm text-white bg-red-500/20 px-3 py-1 rounded-full">Stock: {{ $product->stock_quantity }}</div>
+            @endforeach
+        </div>
+    @endif
+</section>
+
+{{-- SERVICES BAND --}}
+<section class="bg-paper-alt">
+    <div class="section section-y">
+        <div class="flex items-end justify-between gap-4">
+            <h2 class="font-display text-2xl md:text-3xl font-semibold tracking-tight">Same-day service</h2>
+            <a href="{{ route('services') }}" class="text-sm font-medium hover:text-brand-red">All services ▸</a>
+        </div>
+        @if($services->isEmpty())
+            <p class="mt-8 text-ink-soft">Services coming soon.</p>
+        @else
+            <div class="mt-10 grid gap-6 md:grid-cols-3">
+                @foreach($services as $service)
+                    <div class="reveal">
+                        @include('website.partials.service-card', ['service' => $service])
                     </div>
-                </div>
+                @endforeach
             </div>
+        @endif
+    </div>
+</section>
+
+{{-- BRANDS STRIP --}}
+<section class="section pt-8 md:pt-10 pb-2">
+    <p class="text-xs uppercase tracking-widest text-ink-soft text-center">Brands we carry</p>
+    <div class="mt-5 flex flex-wrap items-center justify-center gap-x-10 gap-y-5">
+        @php
+            $logoBrands = [
+                ['name' => 'Apple',    'slug' => 'apple'],
+                ['name' => 'Samsung',  'slug' => 'samsung'],
+                ['name' => 'Xiaomi',   'slug' => 'xiaomi'],
+                ['name' => 'Huawei',   'slug' => 'huawei'],
+            ];
+            $textBrands = ['Tecno', 'Infinix', 'Itel', 'Oraimo'];
+        @endphp
+        @foreach ($logoBrands as $b)
+            <img src="https://cdn.simpleicons.org/{{ $b['slug'] }}/4B4B4B"
+                 alt="{{ $b['name'] }}"
+                 loading="lazy"
+                 class="h-7 md:h-8 w-auto opacity-70 hover:opacity-100 transition">
+        @endforeach
+        @foreach ($textBrands as $name)
+            <span class="font-display text-lg md:text-xl font-semibold text-ink-soft opacity-80">{{ $name }}</span>
+        @endforeach
+    </div>
+</section>
+
+@include('website.partials.how-it-works')
+
+{{-- WORKSHOP VISUAL BAND --}}
+<section class="section pb-10">
+    <div class="grid gap-3 md:grid-cols-4">
+        <figure class="overflow-hidden rounded-2xl aspect-[4/5] md:aspect-square bg-paper-alt md:col-span-2 md:row-span-2 md:aspect-auto">
+            <img src="https://images.pexels.com/photos/4350099/pexels-photo-4350099.jpeg?auto=compress&w=1000"
+                 alt="Technician repairing a phone" loading="lazy"
+                 class="h-full w-full object-cover">
+        </figure>
+        <figure class="overflow-hidden rounded-2xl aspect-square bg-brand-red text-white p-5 flex flex-col justify-between">
+            <p class="text-xs uppercase tracking-widest opacity-80">Warranty</p>
+            <p class="font-display text-xl leading-tight">30-day workmanship guarantee on every repair.</p>
+        </figure>
+        <figure class="overflow-hidden rounded-2xl aspect-square bg-paper-alt">
+            <img src="https://images.pexels.com/photos/3587478/pexels-photo-3587478.jpeg?auto=compress&w=600"
+                 alt="Wireless earbuds on display" loading="lazy"
+                 class="h-full w-full object-cover">
+        </figure>
+        <figure class="overflow-hidden rounded-2xl aspect-square bg-paper text-ink border hairline p-5 flex flex-col justify-between">
+            <p class="text-xs uppercase tracking-widest text-brand-red">Genuine</p>
+            <p class="font-display text-lg leading-tight">Only real accessories, never knockoffs.</p>
+        </figure>
+        <figure class="overflow-hidden rounded-2xl aspect-square bg-paper-alt">
+            <img src="https://images.pexels.com/photos/4068314/pexels-photo-4068314.jpeg?auto=compress&w=600"
+                 alt="Phone shop interior" loading="lazy"
+                 class="h-full w-full object-cover">
+        </figure>
+    </div>
+</section>
+
+{{-- TRUST BAND --}}
+<section class="section section-y border-t hairline">
+    <div class="grid gap-10 md:grid-cols-3 md:items-center">
+        <blockquote class="md:col-span-2 font-display text-2xl md:text-3xl leading-snug text-ink">
+            "Took my phone in, walked out an hour later with everything working.<br>Fair price, no drama."
+            <footer class="mt-4 text-sm text-ink-soft">— A real customer (replace with actual quote)</footer>
+        </blockquote>
+        <ul class="grid grid-cols-3 md:grid-cols-1 gap-4 text-sm">
+            <li class="rounded-xl border hairline p-4">
+                <p class="font-display text-2xl font-semibold tabular-nums">5+</p>
+                <p class="text-ink-soft">years serving the area</p>
+            </li>
+            <li class="rounded-xl border hairline p-4">
+                <p class="font-display text-2xl font-semibold tabular-nums">2,000+</p>
+                <p class="text-ink-soft">repairs done</p>
+            </li>
+            <li class="rounded-xl border hairline p-4">
+                <p class="font-display text-2xl font-semibold tabular-nums">100%</p>
+                <p class="text-ink-soft">genuine accessories</p>
+            </li>
+        </ul>
+    </div>
+</section>
+
+{{-- WHY EYETECH --}}
+<section class="bg-paper-alt">
+    <div class="section section-y">
+        <div class="grid gap-10 md:grid-cols-3">
+            @foreach ([
+                ['title' => 'Genuine accessories only',  'body' => "If it's on our shelf, it's real. No no-name knockoffs that fry your phone."],
+                ['title' => 'Up-front quotes',           'body' => 'You hear the price before any tool comes out. No surprise charges at pickup.'],
+                ['title' => 'Walk-in friendly',          'body' => "No appointment needed. Stop by between 9am and 8pm, six days a week."],
+            ] as $point)
+                <div class="reveal">
+                    <div class="flex h-10 w-10 items-center justify-center rounded-lg bg-brand-red/10 text-brand-red">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+                    </div>
+                    <h3 class="mt-4 font-display text-xl font-semibold">{{ $point['title'] }}</h3>
+                    <p class="mt-2 text-ink-soft leading-relaxed">{{ $point['body'] }}</p>
+                </div>
             @endforeach
         </div>
     </div>
 </section>
-@endif
 
-<!-- Why Choose Us Section -->
-<section class="py-20 relative">
-    <!-- Background Pattern -->
-    <div class="absolute inset-0 opacity-5">
-        <div class="absolute inset-0" style="background-image: url('data:image/svg+xml,<svg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><g fill="%23ffffff" fill-opacity="0.1"><polygon points="30,0 45,15 30,30 15,15"/></g></svg>')"></div>
-    </div>
-    
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div class="text-center mb-16">
-            <h2 class="text-4xl md:text-6xl font-bold text-white mb-6">
-                Why Choose <span class="text-red-500">EyeTech?</span>
-            </h2>
-            <p class="text-xl text-white max-w-3xl mx-auto">
-                We are committed to providing exceptional service and quality products
-            </p>
+{{-- FAQ --}}
+<section class="section section-y">
+    <div class="grid gap-10 md:grid-cols-12">
+        <div class="md:col-span-4">
+            <p class="text-sm uppercase tracking-widest text-brand-red font-medium">FAQ</p>
+            <h2 class="mt-3 font-display text-2xl md:text-3xl font-semibold tracking-tight">Quick answers.</h2>
+            <p class="mt-3 text-ink-soft">If yours isn't here, just ask.</p>
         </div>
-        
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            <div class="text-center group">
-                <div class="w-24 h-24 bg-gradient-to-br from-red-500 to-red-700 rounded-3xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
-                    <svg class="w-12 h-12 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                    </svg>
-                </div>
-                <h3 class="text-2xl font-bold text-white mb-4">Quality Service</h3>
-                <p class="text-white leading-relaxed">Professional technicians with years of experience and state-of-the-art equipment</p>
-            </div>
-            
-            <div class="text-center group">
-                <div class="w-24 h-24 bg-gradient-to-br from-red-500 to-red-700 rounded-3xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
-                    <svg class="w-12 h-12 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                    </svg>
-                </div>
-                <h3 class="text-2xl font-bold text-white mb-4">Fast Turnaround</h3>
-                <p class="text-white leading-relaxed">Quick repairs and efficient service delivery with same-day options available</p>
-            </div>
-            
-            <div class="text-center group">
-                <div class="w-24 h-24 bg-gradient-to-br from-red-500 to-red-700 rounded-3xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
-                    <svg class="w-12 h-12 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1"></path>
-                    </svg>
-                </div>
-                <h3 class="text-2xl font-bold text-white mb-4">Competitive Prices</h3>
-                <p class="text-white leading-relaxed">Affordable solutions without compromising on quality or service standards</p>
-            </div>
-            
-            <div class="text-center group">
-                <div class="w-24 h-24 bg-gradient-to-br from-red-500 to-red-700 rounded-3xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
-                    <svg class="w-12 h-12 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
-                    </svg>
-                </div>
-                <h3 class="text-2xl font-bold text-white mb-4">Customer Care</h3>
-                <p class="text-white leading-relaxed">Dedicated support and customer satisfaction with warranty on all services</p>
-            </div>
+        <div class="md:col-span-8 divide-y divide-line border-y hairline">
+            @foreach ([
+                ['How long does an unlock take?',         "Most carrier unlocks are finished while you wait — usually under an hour."],
+                ['Do you sell second-hand phones?',       "Yes, all checked and tested in-store. We never sell a phone we wouldn't use ourselves."],
+                ['Do you give a warranty on repairs?',    "All screen and battery repairs carry a 30-day workmanship warranty."],
+                ['What payment methods do you accept?',   "Cash, mobile money, and bank transfer."],
+            ] as $faq)
+                <details class="group py-4">
+                    <summary class="flex cursor-pointer items-center justify-between gap-4 font-medium">
+                        <span>{{ $faq[0] }}</span>
+                        <svg class="h-5 w-5 text-ink-soft transition group-open:rotate-180" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+                    </summary>
+                    <p class="mt-3 text-ink-soft leading-relaxed">{{ $faq[1] }}</p>
+                </details>
+            @endforeach
         </div>
     </div>
 </section>
 
-<!-- CTA Section -->
-<section class="py-20 relative overflow-hidden">
-    <!-- Animated Background -->
-    <div class="absolute inset-0 parallax-bg" style="background-image: linear-gradient(135deg, rgba(220, 38, 38, 0.9), rgba(31, 41, 55, 0.9)), url('https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80');">
-        <!-- Floating elements -->
-        <div class="absolute inset-0">
-            <div class="absolute top-10 left-10 w-32 h-32 bg-white/5 rounded-full floating" style="animation-delay: 1s;"></div>
-            <div class="absolute top-32 right-16 w-24 h-24 bg-red-500/10 rounded-lg floating" style="animation-delay: 3s;"></div>
-            <div class="absolute bottom-32 left-16 w-20 h-20 bg-gray-500/10 rounded-full floating" style="animation-delay: 5s;"></div>
-            <div class="absolute bottom-10 right-10 w-28 h-28 bg-white/5 rounded-lg floating" style="animation-delay: 7s;"></div>
-        </div>
-    </div>
-    
-    <div class="relative z-10 max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
-        <div class="card-3d glass p-12 rounded-3xl" style="background: rgba(31, 41, 55, 0.9); backdrop-filter: blur(20px); border: 1px solid rgba(255, 255, 255, 0.2);">
-            <h2 class="text-4xl md:text-6xl font-bold text-white mb-6">
-                Ready to Get <span class="text-red-500">Started?</span>
-            </h2>
-            <p class="text-xl md:text-2xl mb-12 text-white leading-relaxed">
-                Contact us today for all your mobile phone and accessories needs. 
-                We're here to make your day easy!
-            </p>
-            <div class="flex flex-col sm:flex-row gap-6 justify-center items-center">
-                <a href="{{ route('contact') }}" class="group relative px-8 py-4 bg-gradient-to-r from-red-500 to-red-700 rounded-xl font-semibold text-white hover:from-red-600 hover:to-red-800 transition-all duration-300 shadow-lg hover:shadow-red-500/25 transform hover:scale-105">
-                    <span class="relative z-10">Contact Us Now</span>
-                    <div class="absolute inset-0 bg-gradient-to-r from-red-600 to-red-800 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                </a>
-                <a href="tel:3822063" class="group px-8 py-4 glass border-2 border-white/20 rounded-xl font-semibold text-white hover:bg-white/10 hover:border-white/40 transition-all duration-300 transform hover:scale-105">
-                    📞 Call: 382 2063
-                </a>
-            </div>
-        </div>
-    </div>
-</section>
+@include('website.partials.cta-band')
+
 @endsection
