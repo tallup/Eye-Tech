@@ -36,7 +36,6 @@
 - 4 Filament Pages: `Dashboard`, `Profile`, `Reports`, `CustomReports`.
 - 2 Filament Widgets: `InventoryStatsWidget`, `LowStockAlertWidget`.
 - Public Blade pages: home, about, services, contact (in `resources/views/website/`).
-- Admin seed account: `admin@example.com` / `REDACTED` (single user, no role column yet).
 
 ### Primary user
 The owner's brother runs an eye-tech shop. His most frequent task is **ringing up customers at the point of sale**. His top complaint about the current Filament UI is that it looks generic and not professional in front of customers (not speed, not missing features).
@@ -64,7 +63,7 @@ Filament keeps running at `/admin` until every resource is ported. New Inertia +
 
 | Phase | Output | Acceptance |
 |---|---|---|
-| 0 — Foundation | Inertia + Vue + TS + Tailwind + shadcn-vue scaffolded. Shared Sanctum login. Roles installed. Empty `/app/dashboard` reachable. | Login works for admin@example.com, redirects to `/app/dashboard`. Filament login at `/admin` still works. |
+| 0 — Foundation | Inertia + Vue + TS + Tailwind + shadcn-vue scaffolded. Shared Sanctum login. Roles installed. Empty `/app/dashboard` reachable. | Login works for the seeded admin user, redirects to `/app/dashboard`. Filament login at `/admin` still works. |
 | 1 — POS | `/app/pos` fully functional: product search, cart, checkout, receipt. `SaleController` with DB transaction + `lockForUpdate` for stock. Sales index + detail page. | Cashier can complete a sale end-to-end. Stock decrements correctly under concurrent load (test). Receipt prints. |
 | 2 — Resources | Categories, Products, Suppliers, Stock Movements, Services, Service Requests, Users ported to `/app/...`. Dashboard with stats + chart. Reports + Custom Reports. Profile. | Every Filament Resource has a working Vue equivalent passing feature tests. Admin can stop opening `/admin` for daily work. |
 | 3 — Public site | Marketing pages ported to Vue using `PublicLayout`. | All Blade routes return Inertia equivalents. |
