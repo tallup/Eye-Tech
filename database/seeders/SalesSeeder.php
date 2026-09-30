@@ -14,7 +14,7 @@ class SalesSeeder extends Seeder
     {
         // Get some products and users for the sales
         $products = \App\Models\Product::where('is_active', true)->get();
-        $adminUser = \App\Models\User::where('email', 'admin@example.com')->first();
+        $adminUser = \App\Models\User::where('email', config('seed.admin_email'))->first();
 
         if ($products->isEmpty() || !$adminUser) {
             $this->command->info('No products or admin user found. Please run ProductSeeder and AdminUserSeeder first.');

@@ -13,7 +13,7 @@ class SupplierSeeder extends Seeder
             [
                 'name' => 'Tech Suppliers Ltd',
                 'contact_person' => 'John Doe',
-                'email' => 'john@techsuppliers.com',
+                'email' => 'john@example.com',
                 'phone' => '+220 123 4567',
                 'address' => '123 Tech Street, Banjul',
                 'is_active' => true,
@@ -21,7 +21,7 @@ class SupplierSeeder extends Seeder
             [
                 'name' => 'Mobile Accessories Plus',
                 'contact_person' => 'Sarah Johnson',
-                'email' => 'sarah@mobileaccessories.com',
+                'email' => 'sarah@example.com',
                 'phone' => '+220 987 6543',
                 'address' => '456 Mobile Avenue, Serrekunda',
                 'is_active' => true,
@@ -29,7 +29,7 @@ class SupplierSeeder extends Seeder
             [
                 'name' => 'Premium Tech Solutions',
                 'contact_person' => 'Ahmed Hassan',
-                'email' => 'ahmed@premiumtech.com',
+                'email' => 'ahmed@example.com',
                 'phone' => '+220 555 1234',
                 'address' => '789 Premium Plaza, Brikama',
                 'is_active' => true,
@@ -37,7 +37,7 @@ class SupplierSeeder extends Seeder
             [
                 'name' => 'Digital Innovations Inc',
                 'contact_person' => 'Fatou Jallow',
-                'email' => 'fatou@digitalinnovations.com',
+                'email' => 'fatou@example.com',
                 'phone' => '+220 777 8888',
                 'address' => '321 Digital Drive, Bakau',
                 'is_active' => true,
