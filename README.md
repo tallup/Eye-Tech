@@ -1,61 +1,86 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# EyeTech
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Point of sale, inventory and service-request tracking for a phone repair and accessories shop, with a public marketing site, built for the shop's admins and cashiers.
 
-## About Laravel
+## Features
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+Everything below is implemented in the routes, controllers and Vue pages in this repository.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+- **Public website** (Blade): home, about, services and contact pages. Featured services and products are read from the database. The contact form validates input but does not send mail yet.
+- **Authentication**: session login at `/login` with role-based landing page (admins go to the dashboard, cashiers go to the POS).
+- **Point of sale** (`/app/pos`): product grid with category filter, cart, payment method (cash, card, mobile money, bank transfer), and a printable receipt after checkout.
+- **Checkout** is a single database transaction: rows are locked with `lockForUpdate`, stock is checked, the sale and its line items are written, stock is decremented and a stock movement is logged. Insufficient stock aborts the whole sale.
+- **Sales history**: list and detail views. Cashiers see only sales they made; admins see all.
+- **Service requests**: repair tickets with generated request numbers, status (pending, in progress, completed, cancelled), estimated and final cost.
+- **Admin only**: dashboard with revenue stats and charts, products (with image upload), categories, suppliers, services, stock movement log, users, and reports (a 7-day overview and a 30-day extended report).
+- **Profile**: every user can edit their own name, email, phone, picture and password (current password required to change it).
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## Stack
 
-## Learning Laravel
+| Layer | Technology |
+|---|---|
+| Backend | PHP 8.2+ (developed on 8.4), Laravel 12.60 |
+| Bridge | Inertia.js: `inertiajs/inertia-laravel` 3.1, `@inertiajs/vue3` 2.3 |
+| Frontend | Vue 3.5, TypeScript 5.9, Vite 7.1, Tailwind CSS 4.1 |
+| UI primitives | radix-vue 1.9, class-variance-authority, lucide-vue-next, vue-sonner |
+| Authorization | spatie/laravel-permission 7.4, Laravel policies |
+| Auth | Laravel session guard, laravel/sanctum 4.3 installed |
+| Database | SQLite by default (any Laravel-supported driver works) |
+| Tests | PHPUnit 11 (backend), Vitest 4 with happy-dom (frontend) |
+| CI | GitHub Actions: backend tests, type-check, frontend tests, build |
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+## Architecture
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+- **Roles and authorization**: two roles, `admin` and `cashier`, stored both in a `users.role` column and in spatie roles. The `/app/*` route group requires `auth`; the management routes sit inside a `role:admin` group. Policies (`SalePolicy`, `ProductPolicy`, `UserPolicy` and others) are registered in `AppServiceProvider`. For example, `SalePolicy::view` lets an admin see any sale and a cashier only their own.
+- **Validation**: dedicated Form Request classes in `app/Http/Requests` (for example `CheckoutSaleRequest`, `StoreUserRequest`, `UpdateProfileRequest`).
+- **Inertia page structure**: controllers in `app/Http/Controllers/App` return `Inertia::render()` with API Resources from `app/Http/Resources`. Pages live in `resources/js/Pages/<Area>/Index.vue` (plus `Show`/`Edit` where needed), share a layout in `resources/js/Layouts`, and reuse `DataTable`, `FormDialog` and `StatsCard` components. `HandleInertiaRequests` shares the authenticated user, flash messages and app info.
+- **Services**: `CheckoutService` (transactional checkout described above) and `ReportService` (sales and revenue totals for today, week and month, daily chart data, top products, payment method breakdown). `InsufficientStockException` carries the product and quantities involved.
+- **Models**: `User`, `Category`, `Supplier`, `Product`, `Sales`, `SalesItem`, `StockMovement`, `Service`, `ServiceRequest`.
+- **Seeding**: `config/seed.php` reads `SEED_ADMIN_EMAIL` and `SEED_ADMIN_PASSWORD`. No credentials are stored in the repository.
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+## Setup
 
-## Laravel Sponsors
+Requirements: PHP 8.2+ with the sqlite extension, Composer, Node 22+ and npm.
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+```bash
+git clone https://github.com/tallup/Eye-Tech.git
+cd Eye-Tech
 
-### Premium Partners
+composer install
+cp .env.example .env
+php artisan key:generate
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+# Create the SQLite database file (DB_CONNECTION=sqlite is the default)
+touch database/database.sqlite
 
-## Contributing
+# Optional: choose the seeded admin account. If the password is left empty,
+# the seeder generates one and prints it in the console.
+#   SEED_ADMIN_EMAIL=admin@example.com
+#   SEED_ADMIN_PASSWORD=choose-a-strong-password
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+php artisan migrate --seed
+php artisan storage:link
 
-## Code of Conduct
+npm install
+npm run dev          # in one terminal
+php artisan serve    # in another
+```
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+Open `http://localhost:8000` for the public site and `http://localhost:8000/login` to sign in with the seeded admin. Additional users, including cashiers, are created from the Users page.
 
-## Security Vulnerabilities
+### Tests
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+```bash
+php artisan test     # backend
+npm test             # frontend (Vitest)
+npm run type-check   # vue-tsc
+npm run build        # type-check plus production build
+```
+
+## Screenshots
+
+<!-- Add screenshots here: public site, POS, dashboard, service requests. -->
 
 ## License
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+MIT
